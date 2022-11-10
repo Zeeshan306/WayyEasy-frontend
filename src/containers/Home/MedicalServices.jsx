@@ -18,10 +18,10 @@ const MedicalServices = () => {
         best medical services
       </p>
       <div className={home.cards}>
-        <Cards image={details} background="white" title="Get all details" />
-        <Cards image={location} background="blue" title="Track location" />
-        <Cards image={book} background="white"   title="Book hospital" />
-        <Cards image={support} background="white" title="24x7 Support" />
+        <Cards image={details} background="white" color="black" title="Get all details" />
+        <Cards image={location} background="blue" color="white" title="Track location" />
+        <Cards image={book} background="white" color="black"   title="Book hospital" />
+        <Cards image={support} background="white" color="black" title="24x7 Support" />
       </div>
     </div>
   );

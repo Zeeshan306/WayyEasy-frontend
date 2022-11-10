@@ -9,7 +9,10 @@ import useStyles from "./styles.jsx";
 const Cards = (props) => {
   const classes = useStyles();
   return (
-    <Card className={classes.root} style={{ background: props.background }}>
+    <Card
+      className={classes.root}
+      style={{ background: props.background, color: props.color }}
+    >
       <CardActionArea className={classes.media}>
         <img src={props?.image} alt="wayy-easy" />
       </CardActionArea>
