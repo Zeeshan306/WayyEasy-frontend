@@ -1,0 +1,135 @@
+.mainContainer {
+  position: relative;
+  width: 85%;
+  margin: auto;
+}
+
+.sectionOne {
+  position: relative;
+  display: flex;
+  margin-bottom: 120px;
+}
+
+.introFirst {
+  width: 45%;
+}
+
+.introFirst b,
+.introFirst h1 {
+  font-weight: bold;
+  font-size: 5vw;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.introFirst h1 b {
+  color: #4200ff;
+  margin-left: 0px;
+}
+
+.introFirst p {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #b4b4b4;
+}
+
+.introFirstButton {
+  position: relative;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.introFirstButton button:nth-child(1) {
+  background: #4200ff;
+  color: white;
+  border: none;
+  height: 60px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px;
+  border-radius: 11px;
+}
+
+.introFirstButton button:nth-child(1) span {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.introFirstButton button:nth-child(2) {
+  background: transparent;
+  display: flex;
+  color: black;
+  font-weight: 600;
+  line-height: 60px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.introFirstButton button:nth-child(2) img {
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+.introSecond {
+  width: 45%;
+}
+
+.introSecondCircle {
+  position: absolute;
+  height: 320px;
+  width: 320px;
+  right: 0;
+  margin-top: 50px;
+  border: 20px solid #e7e7e7;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.introSecondCircle2 {
+  background: #4200ff;
+  height: 290px;
+  width: 290px;
+  margin: auto;
+  margin-top: 15px;
+  border-radius: 50%;
+}
+
+.introSecondCircle2 img {
+  height: 280px;
+  margin-top: 5px;
+}
+
+/* medical services */
+
+.mSContainer {
+  text-align: center;
+}
+
+.mSContainer h1,
+.mSContainer p {
+  margin: auto;
+}
+
+.mSContainer h1 {
+  font-size: 2.2em;
+}
+
+.mSContainer p {
+  color: #b4b4b4;
+}
+
+.cards {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1000px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}

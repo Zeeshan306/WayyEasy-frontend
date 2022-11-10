@@ -13,14 +13,18 @@ import ManageHospital from "./AdminPanel/Hospital/ManageHospitals";
 import Reviews from "./AdminPanel/Reviews";
 import Rooms from "./AdminPanel/Rooms";
 import ManageRooms from "./AdminPanel/Rooms/ManageRooms";
+
+//User Routes
+import Home from "./containers/Home/Home";
+
 import "./App.css";
 
 function App() {
-
   return (
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/" exact component={Home} />
           <Route path="/admin/auth" exact component={Auth} />
           <PrivateRoute
             path="/admin"
