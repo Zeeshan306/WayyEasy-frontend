@@ -1,6 +1,6 @@
 import React from "react";
-import Cards from "../../components/cards/Cards";
 
+import Cards from "../../components/cards/services/ServicesCard.jsx";
 import support from "../../files/Images/support.png";
 import book from "../../files/Images/booking.png";
 import details from "../../files/Images/details.png";
@@ -18,10 +18,30 @@ const MedicalServices = () => {
         best medical services
       </p>
       <div className={home.cards}>
-        <Cards image={details} background="white" color="black" title="Get all details" />
-        <Cards image={location} background="blue" color="white" title="Track location" />
-        <Cards image={book} background="white" color="black"   title="Book hospital" />
-        <Cards image={support} background="white" color="black" title="24x7 Support" />
+        <Cards
+          image={details}
+          background="white"
+          color="black"
+          title="Get all details"
+        />
+        <Cards
+          image={location}
+          background="blue"
+          color="white"
+          title="Track location"
+        />
+        <Cards
+          image={book}
+          background="white"
+          color="black"
+          title="Book hospital"
+        />
+        <Cards
+          image={support}
+          background="white"
+          color="black"
+          title="24x7 Support"
+        />
       </div>
     </div>
   );

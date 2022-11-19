@@ -4,6 +4,8 @@ import watchVideo from "../../files/Images/watch_video.png";
 import introImage from "../../files/Images/intro_image.png";
 import home from "./home.module.css";
 import MedicalServices from "./MedicalServices";
+import Testimonial from "./Testimonial";
+import Articles from "./Articles";
 
 const Home = () => {
   return (
@@ -38,6 +40,8 @@ const Home = () => {
         </div>
       </div>
       <MedicalServices />
+      <Testimonial />
+      <Articles />
     </div>
   );
 };
