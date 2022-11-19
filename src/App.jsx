@@ -15,6 +15,7 @@ import Rooms from "./AdminPanel/Rooms";
 import ManageRooms from "./AdminPanel/Rooms/ManageRooms";
 
 //User Routes
+import Footer from "./components/footer/Footer";
 import Home from "./containers/Home/Home";
 
 import "./App.css";
@@ -76,6 +77,7 @@ function App() {
             )}
           />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

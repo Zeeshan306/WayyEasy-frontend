@@ -119,16 +119,3 @@
 .mSContainer p {
   color: #b4b4b4;
 }
-
-.cards {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 1000px) {
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-}

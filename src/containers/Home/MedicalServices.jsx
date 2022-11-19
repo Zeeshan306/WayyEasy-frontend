@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Grid } from "@material-ui/core";
 import Cards from "../../components/cards/services/ServicesCard.jsx";
 import support from "../../files/Images/support.png";
 import book from "../../files/Images/booking.png";
@@ -17,7 +18,7 @@ const MedicalServices = () => {
         <br />
         best medical services
       </p>
-      <div className={home.cards}>
+      <Grid container justifyContent="center" spacing={2} className={home.cards}>
         <Cards
           image={details}
           background="white"
@@ -42,7 +43,7 @@ const MedicalServices = () => {
           color="black"
           title="24x7 Support"
         />
-      </div>
+      </Grid>
     </div>
   );
 };
