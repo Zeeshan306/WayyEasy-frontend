@@ -10,10 +10,26 @@ const Articles = () => {
     <div className={home.articlesContainer}>
       <h1>Our Latest Articles</h1>
       <p>Written by our experts</p>
-      <Grid container spacing={2}>
-      <ArticleCards main={true}/>
-      <ArticleCards main={false}/>
-      <ArticleCards main={false}/>
+      <Grid container spacing={2} justifyContent="space-around">
+        <Grid item xs={12} sm={6} md={4} lg={4}>
+          <ArticleCards
+            main={true}
+            title="Regular Exercise"
+            des="Regular exercise can take away more the 80% of diseases both mental and physical"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={4}>
+          <ArticleCards
+            main={false}
+            title="Regular Exercise"
+            des="Regular exercise can take away more the 80% of diseases both mental and physical"
+          />
+          <ArticleCards
+            main={false}
+            title="Regular Exercise"
+            des="Regular exercise can take away more the 80% of diseases both mental and physical"
+          />
+        </Grid>
       </Grid>
     </div>
   );

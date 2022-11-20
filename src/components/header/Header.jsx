@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+import HomeIcon from "@material-ui/icons/Home";
+import InfoIcon from "@material-ui/icons/Info";
+import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
+import DescriptionIcon from "@material-ui/icons/Description";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -30,7 +30,6 @@ const Header = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   useEffect(() => {
-    console.log("location chaned");
     setAuthUser(JSON.parse(localStorage.getItem("owner"))?.token);
   }, [location]);
 
@@ -86,12 +85,40 @@ const Header = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <a href="/">Home</a>
-      <a href="/articles">Articles</a>
-      <a href="/contact">Contact Us</a>
-      <a href="/abput">About Us</a>
+      <MenuItem>
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <HomeIcon />
+        </IconButton>
+        <a href="/" style={{ textDecoration: "none", color: "black" }}>
+          Home
+        </a>
+      </MenuItem>
+      <MenuItem>
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <DescriptionIcon />
+        </IconButton>
+        <a href="/articles" style={{ textDecoration: "none", color: "black" }}>
+          Articles
+        </a>
+      </MenuItem>
+      <MenuItem>
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <PermContactCalendarIcon />
+        </IconButton>
+        <a href="/contact" style={{ textDecoration: "none", color: "black" }}>
+          Contact Us
+        </a>
+      </MenuItem>
+      <MenuItem>
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <InfoIcon />
+        </IconButton>
+        <a href="/abput" style={{ textDecoration: "none", color: "black" }}>
+          About Us
+        </a>
+      </MenuItem>
       {authUser?.token && (
-        <>
+        <div>
           <MenuItem>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -119,7 +146,7 @@ const Header = () => {
             </IconButton>
             <p>Profile</p>
           </MenuItem>
-        </>
+        </div>
       )}
     </Menu>
   );
@@ -147,7 +174,7 @@ const Header = () => {
             <a href="/contact">Contact Us</a>
             <a href="/abput">About Us</a>
             {authUser?.token && (
-              <>
+              <div>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                   <Badge badgeContent={4} color="secondary">
                     <MailIcon />
@@ -171,7 +198,7 @@ const Header = () => {
                 >
                   <AccountCircle />
                 </IconButton>
-              </>
+              </div>
             )}
           </div>
           <div className={classes.sectionMobile}>

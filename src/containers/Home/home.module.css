@@ -119,3 +119,9 @@
 .mSContainer p {
   color: #b4b4b4;
 }
+
+/* articles */
+.articlesContainer {
+  width: 100%;
+  text-align: center;
+}
