@@ -15,8 +15,9 @@ import Rooms from "./AdminPanel/Rooms";
 import ManageRooms from "./AdminPanel/Rooms/ManageRooms";
 
 //User Routes
-import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 import Home from "./containers/Home/Home";
+import Footer from "./components/footer/Footer";
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/admin/auth" exact component={Auth} />
