@@ -12,14 +12,13 @@ import image from "../../../files/Images/articles_default.png";
 const useStyles = makeStyles({
   root: {
     position: "relative",
-    width: 280,
     marginBottom: 10,
     padding: 20,
     zIndex: 1,
+    display: "flex",
   },
   media: {
     position: "relative",
-    width: 250,
     margin: "auto",
     borderRadius: 20,
     zIndex: 3,
@@ -27,7 +26,6 @@ const useStyles = makeStyles({
   blue: {
     position: "relative",
     margin: "auto",
-    width: 260,
     marginTop: -50,
     zIndex: 2,
     borderRadius: 20,
@@ -37,24 +35,46 @@ const useStyles = makeStyles({
 });
 
 const ArticlesCard = (props) => {
+  let width = window.innerWidth;
+  let alignStyle;
+  
   const classes = useStyles();
+  if (props?.main) {
+    alignStyle = {
+      style: {
+        height: 400,
+        marginTop: 30,
+        maxWidth: 320,
+        flexDirection: "column",
+      },
+    };
+  } else {
+    alignStyle = {
+      style: {
+        height: width > 959 ? 200: 400,
+        maxWidth: width > 959 ? 560: 320,
+        flexDirection: width <= 959 ? "column" : "row",
+      },
+    };
+  }
   return (
-    <Card
-      className={classes.root}
-      elevation={3}
-      style={{
-        height: props?.main ? 350 : 200,
-        marginTop: props?.main ? 50 : 0,
-
-      }}
-    >
-      <CardMedia
-        style={{ height: props?.main ? 160 : 120 }}
-        className={classes.media}
-        title="articles image"
-        image={image}
-      />
-      <div className={classes.blue}></div>
+    <Card className={classes.root} elevation={3} style={alignStyle.style}>
+      {" "}
+      <div>
+        <CardMedia
+          style={{
+            height: props?.main ? 160 : 190,
+            width: props?.main ? 270 : 250,
+          }}
+          className={classes.media}
+          title="articles image"
+          image={image}
+        />
+        <div
+          className={classes.blue}
+          style={{ width: props?.main ? 280 : 260 }}
+        ></div>
+      </div>
       <CardContent>
         <Typography variant="h5" component="h2" gutterBottom>
           {props?.title}
