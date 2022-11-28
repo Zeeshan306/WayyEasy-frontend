@@ -24,8 +24,8 @@ import {
   createRoom,
   fetchSingleRoom,
   updateRoom,
-} from "../../redux/actions/admin/rooms";
-import { getHospitals } from "../../redux/actions/admin/hospital";
+} from "../../../redux/actions/admin/hospitalAdmin/rooms";
+import { getHospitals } from "../../../redux/actions/admin/hospitalAdmin/hospital";
 
 const ManageRoom = (hospital) => {
   const createRooms = {

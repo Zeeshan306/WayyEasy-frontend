@@ -44,4 +44,13 @@ export default makeStyles((theme) => ({
       display: "none",
     },
   },
+  btnStyle: {
+    textTransform: "capitalize",
+  },
+  dialogBody: {
+    width: "360px",
+    display: "flex",
+    justifyContent: "space-between",
+    padding: 15,
+  },
 }));

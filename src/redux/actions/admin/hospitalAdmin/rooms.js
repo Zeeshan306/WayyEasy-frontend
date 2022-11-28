@@ -1,5 +1,5 @@
-import { FetchSingleRoom, FetchRooms, CreateRoom, UpdateRoom, DeleteRoom } from "../../../components/config";
-import { roomsConsts } from "../../../components/helpers/constants";
+import { FetchSingleRoom, FetchRooms, CreateRoom, UpdateRoom, DeleteRoom } from "../../../../components/config";
+import { roomsConsts } from "../../../../components/helpers/constants";
 
 export const fetchRooms = () => async (dispatch) => {
   try {

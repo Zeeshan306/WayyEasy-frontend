@@ -10,7 +10,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { deleteHospital } from "../../redux/actions/admin/hospital";
+import { deleteHospital } from "../../../redux/actions/admin/hospitalAdmin/hospital";
 import useStyles from "./styles";
 
 const Hospital = ({ hospital }) => {

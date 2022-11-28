@@ -4,8 +4,8 @@ import {
   CreateHospitals,
   EditHospitals,
   DeleteHospitals,
-} from "../../../components/config";
-import { hospitalConsts } from "../../../components/helpers/constants";
+} from "../../../../components/config";
+import { hospitalConsts } from "../../../../components/helpers/constants";
 
 export const getHospitals = () => async (dispatch) => {
   try {

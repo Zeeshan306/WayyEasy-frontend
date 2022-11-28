@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getHospitals } from "../../redux/actions/admin/hospital";
+import { getHospitals } from "../../../redux/actions/admin/hospitalAdmin/hospital";
 import { Select, InputLabel, FormControl, MenuItem } from "@material-ui/core";
 
 import useStyles from "./styles";
 import Ratings from "./Ratings";
 import Reviews from "./Reviews";
-import { getRatingsByHospital } from "../../redux/actions/admin/ratings";
+import { getRatingsByHospital } from "../../../redux/actions/admin/hospitalAdmin/ratings";
 
 const RatingAndReview = () => {
   const classes = useStyles();

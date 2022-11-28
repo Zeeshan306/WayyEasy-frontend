@@ -1,4 +1,4 @@
-import { ownersConst } from "../../../components/helpers/constants";
+import { ownersConst } from "../../../../components/helpers/constants";
 
 export default (state = { authData: null }, action) => {
     switch (action.type) {

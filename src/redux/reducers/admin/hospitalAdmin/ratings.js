@@ -1,4 +1,4 @@
-import { doctorConsts, ratingsConst } from "../../../components/helpers/constants";
+import { doctorConsts, ratingsConst } from "../../../../components/helpers/constants";
 
 const initialState = {
   allRatings: [],

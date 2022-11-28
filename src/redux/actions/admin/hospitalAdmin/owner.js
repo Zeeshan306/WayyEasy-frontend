@@ -1,5 +1,5 @@
-import { LogIn, LogOut, SignUp } from "../../../components/config";
-import { ownersConst } from "../../../components/helpers/constants";
+import { LogIn, LogOut, SignUp } from "../../../../components/config";
+import { ownersConst } from "../../../../components/helpers/constants";
 
 export const logIn = (owner, history) => async (dispatch) => {
   try {

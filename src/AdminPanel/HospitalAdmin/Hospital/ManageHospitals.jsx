@@ -17,8 +17,8 @@ import {
   getSingleHospital,
   addHospital,
   updateHospitals,
-} from "../../redux/actions/admin/hospital";
-import ImageCropper from "../../components/ImageCropper/ImageCropper";
+} from "../../../redux/actions/admin/hospitalAdmin/hospital";
+import ImageCropper from "../../../components/ImageCropper/ImageCropper";
 
 const ManageHospital = (hospital) => {
   const hospitalInput = {

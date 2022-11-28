@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   root: {
     position: "relative",
     marginBottom: 10,
-    padding: 20,
+    padding: 10,
     zIndex: 1,
     display: "flex",
   },
@@ -37,30 +37,30 @@ const useStyles = makeStyles({
 const ArticlesCard = (props) => {
   let width = window.innerWidth;
   let alignStyle;
-  
+
   const classes = useStyles();
   if (props?.main) {
     alignStyle = {
       style: {
-        height: 400,
+        height: width <= 959 && width >= 700 ? 200 : 400,
         marginTop: 30,
-        maxWidth: 320,
-        flexDirection: "column",
+        maxWidth: width <= 959 && width >= 700 ? 560 : 320,
+        flexDirection: width <= 959 && width >= 700 ? "row" : "column",
       },
     };
   } else {
     alignStyle = {
       style: {
-        height: width > 959 ? 200: 400,
-        maxWidth: width > 959 ? 560: 320,
-        flexDirection: width <= 959 ? "column" : "row",
+        height: width > 700 ? 200 : 400,
+        maxWidth: width > 700 ? 560 : 320,
+        flexDirection: width <= 700 ? "column" : "row",
       },
     };
   }
   return (
     <Card className={classes.root} elevation={3} style={alignStyle.style}>
       {" "}
-      <div>
+      <div style={{ position: "relative" }}>
         <CardMedia
           style={{
             height: props?.main ? 160 : 190,
@@ -75,7 +75,7 @@ const ArticlesCard = (props) => {
           style={{ width: props?.main ? 280 : 260 }}
         ></div>
       </div>
-      <CardContent>
+      <CardContent style={{ position: "relative" }}>
         <Typography variant="h5" component="h2" gutterBottom>
           {props?.title}
         </Typography>

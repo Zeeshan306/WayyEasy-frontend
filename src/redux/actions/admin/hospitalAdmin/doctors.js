@@ -1,4 +1,4 @@
-import { doctorConsts } from "../../../components/helpers/constants";
+import { doctorConsts } from "../../../../components/helpers/constants";
 
 import {
   CreateDoctor,
@@ -6,7 +6,7 @@ import {
   FetchDoctors,
   FetchSingleDoctor,
   UpdateDoctor,
-} from "../../../components/config";
+} from "../../../../components/config";
 
 export const fetchDoctors = () => async (dispatch) => {
   try {

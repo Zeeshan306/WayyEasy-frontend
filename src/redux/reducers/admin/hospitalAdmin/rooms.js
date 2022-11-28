@@ -1,4 +1,4 @@
-import { roomsConsts } from "../../../components/helpers/constants";
+import { roomsConsts } from "../../../../components/helpers/constants";
 
 const initialState = {
   allRooms: [],

@@ -1,5 +1,5 @@
-import { GetRatingsByHospital } from "../../../components/config";
-import { ratingsConst } from "../../../components/helpers/constants";
+import { GetRatingsByHospital } from "../../../../components/config";
+import { ratingsConst } from "../../../../components/helpers/constants";
 
 export const getRatingsByHospital = (id) => async (dispatch) => {
   try {

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Import actions
 import useStyles from "./styles";
 import Hospital from "./Hospital";
-import { getHospitals } from "../../redux/actions/admin/hospital";
+import { getHospitals } from "../../../redux/actions/admin/hospitalAdmin/hospital";
 
 const Hospitals = () => {
   const history = useHistory();

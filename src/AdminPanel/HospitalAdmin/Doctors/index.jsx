@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // Import actions
-import { fetchDoctors } from "../../redux/actions/admin/doctors";
+import { fetchDoctors } from "../../../redux/actions/admin/hospitalAdmin/doctors";
 import useStyles from "./styles";
 import Doctor from "./Doctor";
 

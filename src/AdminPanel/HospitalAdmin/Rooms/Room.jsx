@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import useStyles from "./styles";
-import { deleteRoom } from "../../redux/actions/admin/rooms";
+import { deleteRoom } from "../../../redux/actions/admin/hospitalAdmin/rooms";
 
 const Room = ({ room }) => {
   const classes = useStyles();

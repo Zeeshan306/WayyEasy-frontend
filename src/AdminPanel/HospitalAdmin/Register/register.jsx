@@ -12,8 +12,8 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import useStyles from "./style";
-import Input from "../../components/inputTypes/inputTypes";
-import { logIn, signUp } from "../../redux/actions/admin/owner";
+import Input from "../../../components/inputTypes/inputTypes";
+import { logIn, signUp } from "../../../redux/actions/admin/hospitalAdmin/owner";
 
 const user = {
   firstName: "",

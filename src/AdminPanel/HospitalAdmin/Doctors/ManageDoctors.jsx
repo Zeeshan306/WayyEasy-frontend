@@ -21,8 +21,8 @@ import {
   createDoctor,
   fetchSingleDoctor,
   updateDoctor,
-} from "../../redux/actions/admin/doctors";
-import { getHospitals } from "../../redux/actions/admin/hospital";
+} from "../../../redux/actions/admin/hospitalAdmin/doctors";
+import { getHospitals } from "../../../redux/actions/admin/hospitalAdmin/hospital";
 
 const ManageDoctors = (hospital) => {
   const initialData = {

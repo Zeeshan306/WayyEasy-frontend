@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Room from "./Room";
 import useStyles from "./styles";
-import { fetchRooms } from "../../redux/actions/admin/rooms";
+import { fetchRooms } from "../../../redux/actions/admin/hospitalAdmin/rooms";
 
 const Rooms = () => {
   const history = useHistory();

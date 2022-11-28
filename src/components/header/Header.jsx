@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import {
+  AppBar,
+  Toolbar,
+  Badge,
+  MenuItem,
+  Menu,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 import DescriptionIcon from "@material-ui/icons/Description";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -16,7 +22,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
-import { logOut } from "../../redux/actions/admin/owner";
+import { logOut } from "../../redux/actions/admin/hospitalAdmin/owner";
 import logo from "../../files/Images/icon.png";
 import useStyles from "./styles";
 
@@ -28,6 +34,15 @@ const Header = () => {
   const [authUser, setAuthUser] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const handleClose = () => {
+    setDialogOpen(false);
+  };
 
   useEffect(() => {
     setAuthUser(JSON.parse(localStorage.getItem("owner"))?.token);
@@ -117,6 +132,14 @@ const Header = () => {
           About Us
         </a>
       </MenuItem>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={handleClickOpen}
+        style={{ margin: 5 }}
+      >
+        Become a Partner?
+      </Button>
       {authUser?.token && (
         <div>
           <MenuItem>
@@ -151,8 +174,39 @@ const Header = () => {
     </Menu>
   );
 
+  const customDialog = (
+    <Dialog
+      open={dialogOpen}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">WayyEasy and You !!!</DialogTitle>
+      <DialogContent className={classes.dialogBody}>
+        <Button
+          variant="contained"
+          onClick={handleClose}
+          className={classes.btnStyle}
+          color="primary"
+        >
+          As an OPD
+        </Button>
+        <Button
+          variant="contained"
+          className={classes.btnStyle}
+          onClick={handleClose}
+          color="primary"
+          autoFocus
+        >
+          As a Hospital/Nursing Home
+        </Button>
+      </DialogContent>
+    </Dialog>
+  );
+
   return (
     <div className={classes.grow}>
+      {dialogOpen && customDialog}
       <AppBar
         position="static"
         color="default"
@@ -173,6 +227,14 @@ const Header = () => {
             <a href="/articles">Articles</a>
             <a href="/contact">Contact Us</a>
             <a href="/abput">About Us</a>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={handleClickOpen}
+              style={{ marginTop: 5 }}
+            >
+              Become a Partner?
+            </Button>
             {authUser?.token && (
               <div>
                 <IconButton aria-label="show 4 new mails" color="inherit">

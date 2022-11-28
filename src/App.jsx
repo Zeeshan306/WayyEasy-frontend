@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
 //Admin Routes
-import Auth from "./AdminPanel/Register/register";
-import Admin from "./AdminPanel";
-import Dashboard from "./AdminPanel/Dashboard";
-import Doctors from "./AdminPanel/Doctors";
-import ManageDoctors from "./AdminPanel/Doctors/ManageDoctors";
-import Hospital from "./AdminPanel/Hospital";
-import ManageHospital from "./AdminPanel/Hospital/ManageHospitals";
-import Reviews from "./AdminPanel/Reviews";
-import Rooms from "./AdminPanel/Rooms";
-import ManageRooms from "./AdminPanel/Rooms/ManageRooms";
+import Auth from "./AdminPanel/HospitalAdmin/Register/register";
+import Admin from "./AdminPanel/HospitalAdmin";
+import Dashboard from "./AdminPanel/HospitalAdmin/Dashboard";
+import Doctors from "./AdminPanel/HospitalAdmin/Doctors";
+import ManageDoctors from "./AdminPanel/HospitalAdmin/Doctors/ManageDoctors";
+import Hospital from "./AdminPanel/HospitalAdmin/Hospital";
+import ManageHospital from "./AdminPanel/HospitalAdmin/Hospital/ManageHospitals";
+import Reviews from "./AdminPanel/HospitalAdmin/Reviews";
+import Rooms from "./AdminPanel/HospitalAdmin/Rooms";
+import ManageRooms from "./AdminPanel/HospitalAdmin/Rooms/ManageRooms";
 
 //User Routes
 import Header from "./components/header/Header";

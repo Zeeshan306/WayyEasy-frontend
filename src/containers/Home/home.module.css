@@ -7,7 +7,8 @@
 .sectionOne {
   position: relative;
   display: flex;
-  margin-bottom: 120px;
+  justify-content: space-between;
+  margin-bottom: 100px;
 }
 
 .introFirst {
@@ -75,13 +76,14 @@
 
 .introSecond {
   width: 45%;
+  position: relative;
 }
 
 .introSecondCircle {
   position: absolute;
+  right: 0;
   height: 320px;
   width: 320px;
-  right: 0;
   margin-top: 50px;
   border: 20px solid #e7e7e7;
   border-radius: 50%;
@@ -124,4 +126,45 @@
 .articlesContainer {
   width: 100%;
   text-align: center;
+}
+
+/* media query */
+@media screen and (max-width: 968px) {
+  .sectionOne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .introFirst,
+  .introSecond {
+    width: 100%;
+  }
+
+  .introSecondCircle {
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .introFirstButton {
+    flex-direction: column;
+  }
+
+  .introSecondCircle {
+    height: 260px;
+    width: 260px;
+  }
+  
+  .introSecondCircle2 {
+    height: 230px;
+    width: 230px;
+  }
+  
+  .introSecondCircle2 img {
+    height: 220px;
+    margin-top: 5px;
+  }
 }

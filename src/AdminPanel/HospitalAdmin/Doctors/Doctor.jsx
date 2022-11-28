@@ -12,7 +12,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import useStyles from "./styles";
-import { deleteDoctor } from "../../redux/actions/admin/doctors";
+import { deleteDoctor } from "../../../redux/actions/admin/hospitalAdmin/doctors";
 
 const Doctor = ({ doctor }) => {
   const classes = useStyles();
