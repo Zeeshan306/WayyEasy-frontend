@@ -46,11 +46,12 @@ export default makeStyles((theme) => ({
   },
   btnStyle: {
     textTransform: "capitalize",
+    background: "#4200FF",
+    color: "#FFFFFF",
+    margin: 3,
+    width: "220px",
   },
   dialogBody: {
-    width: "360px",
-    display: "flex",
-    justifyContent: "space-between",
     padding: 15,
   },
 }));

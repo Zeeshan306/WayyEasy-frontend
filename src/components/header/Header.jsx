@@ -9,6 +9,7 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
+  Grid,
 } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
@@ -40,7 +41,9 @@ const Header = () => {
     setDialogOpen(true);
   };
 
-  const handleClose = () => {
+  const toAdmin = (adminType) => {
+    sessionStorage.setItem("adminType", adminType);
+    history.push("/admin/auth/");
     setDialogOpen(false);
   };
 
@@ -128,7 +131,7 @@ const Header = () => {
         <IconButton aria-label="show 4 new mails" color="inherit">
           <InfoIcon />
         </IconButton>
-        <a href="/abput" style={{ textDecoration: "none", color: "black" }}>
+        <a href="/about" style={{ textDecoration: "none", color: "black" }}>
           About Us
         </a>
       </MenuItem>
@@ -177,29 +180,46 @@ const Header = () => {
   const customDialog = (
     <Dialog
       open={dialogOpen}
-      onClose={handleClose}
+      onClose={() => setDialogOpen(false)}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">WayyEasy and You !!!</DialogTitle>
       <DialogContent className={classes.dialogBody}>
-        <Button
-          variant="contained"
-          onClick={handleClose}
-          className={classes.btnStyle}
-          color="primary"
-        >
-          As an OPD
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.btnStyle}
-          onClick={handleClose}
-          color="primary"
-          autoFocus
-        >
-          As a Hospital/Nursing Home
-        </Button>
+        <Grid style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button
+            variant="contained"
+            onClick={() => toAdmin("opd")}
+            className={classes.btnStyle}
+          >
+            As an OPD
+          </Button>
+          <Button
+            variant="contained"
+            className={classes.btnStyle}
+            onClick={() => toAdmin("doctor")}
+            autoFocus
+          >
+            As a Doctor
+          </Button>
+        </Grid>
+        <Grid style={{ display: "flex", justifyContent: "space-between", marginTop: 10 }}>
+          <Button
+            variant="contained"
+            onClick={() => toAdmin("pathLab")}
+            className={classes.btnStyle}
+          >
+            As a Path Lab
+          </Button>
+          <Button
+            variant="contained"
+            className={classes.btnStyle}
+            onClick={() => toAdmin("hospital")}
+            autoFocus
+          >
+            As a Hospital/Nursing Home
+          </Button>
+        </Grid>
       </DialogContent>
     </Dialog>
   );
@@ -226,7 +246,7 @@ const Header = () => {
             <a href="/">Home</a>
             <a href="/articles">Articles</a>
             <a href="/contact">Contact Us</a>
-            <a href="/abput">About Us</a>
+            <a href="/about">About Us</a>
             <Button
               variant="outlined"
               color="primary"

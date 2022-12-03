@@ -17,6 +17,7 @@ import ManageRooms from "./AdminPanel/HospitalAdmin/Rooms/ManageRooms";
 //User Routes
 import Header from "./components/header/Header";
 import Home from "./containers/Home/Home";
+import AboutUs from "./containers/About/AboutUs";
 import Footer from "./components/footer/Footer";
 
 import "./App.css";
@@ -28,6 +29,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/about" exact component={AboutUs} />
           <Route path="/admin/auth" exact component={Auth} />
           <PrivateRoute
             path="/admin"

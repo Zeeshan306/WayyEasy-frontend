@@ -8,12 +8,15 @@ import {
   Container,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import useStyles from "./style";
 import Input from "../../../components/inputTypes/inputTypes";
-import { logIn, signUp } from "../../../redux/actions/admin/hospitalAdmin/owner";
+import {
+  logIn,
+  signUp,
+} from "../../../redux/actions/admin/hospitalAdmin/owner";
+import { useEffect } from "react";
 
 const user = {
   firstName: "",
@@ -25,11 +28,15 @@ const user = {
 
 const Register = () => {
   const classes = useStyles();
-  const history = useHistory();
   const dispatch = useDispatch();
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(user);
+  const [adminType, setAdminType] = useState(null);
+
+  useEffect(() => {
+    setAdminType(sessionStorage.getItem("adminType"));
+  }, [sessionStorage.getItem("adminType")]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -117,7 +124,7 @@ const Register = () => {
           >
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justifyContent="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
                 {isSignup

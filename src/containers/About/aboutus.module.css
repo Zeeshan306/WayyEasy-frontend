@@ -1,0 +1,30 @@
+.mainContainer {
+    position: relative;
+    width: 85%;
+    margin: auto;
+}
+
+.sectionOne {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.oneFirstHalf {
+    width: 55%;
+}
+
+.oneFirstHalf h1 {
+    font-size: 4.3vw;
+    font-weight: 900;
+}
+
+.oneSecondHalf {
+    position: relative;
+    width: 40%;
+    align-items: flex-end;
+}
+
+.oneSecondHalf img {
+    width: 90%;
+}

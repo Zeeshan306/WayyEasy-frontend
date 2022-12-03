@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   TextField,
   Typography,
@@ -16,7 +17,6 @@ import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 
 import useStyles from "./styles";
-import { useEffect, useState } from "react";
 import {
   createDoctor,
   fetchSingleDoctor,
