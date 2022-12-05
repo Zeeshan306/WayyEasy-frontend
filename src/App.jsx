@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
-//Admin Routes
+//Hospital Admin Routes
 import Auth from "./AdminPanel/HospitalAdmin/Register/register";
 import Admin from "./AdminPanel/HospitalAdmin";
 import Dashboard from "./AdminPanel/HospitalAdmin/Dashboard";
@@ -14,6 +14,13 @@ import Reviews from "./AdminPanel/HospitalAdmin/Reviews";
 import Rooms from "./AdminPanel/HospitalAdmin/Rooms";
 import ManageRooms from "./AdminPanel/HospitalAdmin/Rooms/ManageRooms";
 
+//OPD Admin routes
+import OPDAdmin from "./AdminPanel/OPDAdmin";
+import OPDServices from "./AdminPanel/OPDAdmin/Services";
+import OPDDashboard from "./AdminPanel/OPDAdmin/Dashboard/Dashboard.jsx";
+import OPDService from "./AdminPanel/OPDAdmin/Services/Service";
+import ManageServices from "./AdminPanel/OPDAdmin/Services/ManageServices";
+
 //User Routes
 import Header from "./components/header/Header";
 import Home from "./containers/Home/Home";
@@ -21,6 +28,7 @@ import AboutUs from "./containers/About/AboutUs";
 import Footer from "./components/footer/Footer";
 
 import "./App.css";
+import ServiceView from "./AdminPanel/OPDAdmin/Services/ServiceView";
 
 function App() {
   return (
@@ -31,6 +39,41 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={AboutUs} />
           <Route path="/admin/auth" exact component={Auth} />
+          <PrivateRoute
+            path="/admin/opd/"
+            component={() => (
+              <OPDAdmin>
+                <Switch>
+                  <Route
+                    path="/admin/opd/services/"
+                    exact
+                    component={OPDServices}
+                  />
+                  <Route
+                    path="/admin/opd/services/manageServices/"
+                    exact
+                    component={ManageServices}
+                  />
+                  <Route
+                    path="/admin/opd/services/manageServices/:id"
+                    exact
+                    component={ManageServices}
+                  />
+                  <Route
+                    path="/admin/opd/services/service/"
+                    exact
+                    component={OPDService}
+                  />
+                  <Route
+                    path="/admin/opd/services/service/:id"
+                    exact
+                    component={ServiceView}
+                  />
+                  <Route path="/admin/opd/" exact component={OPDDashboard} />
+                </Switch>
+              </OPDAdmin>
+            )}
+          />
           <PrivateRoute
             path="/admin"
             component={() => (

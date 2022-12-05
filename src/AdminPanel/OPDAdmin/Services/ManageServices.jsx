@@ -5,66 +5,60 @@ import {
   TextareaAutosize,
   Box,
   Button,
+  MenuItem,
+  Select,
   Grid,
   CardMedia,
 } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useHistory } from "react-router-dom";
+import FileBase from "react-file-base64";
+import { useDispatch, useSelector } from "react-redux";
+import ImageCropper from "../../../components/ImageCropper/ImageCropper";
 
 import useStyles from "./styles";
 import {
-  getSingleHospital,
-  addHospital,
-  updateHospitals,
-} from "../../../redux/actions/admin/hospitalAdmin/hospital";
-import ImageCropper from "../../../components/ImageCropper/ImageCropper";
+  createOPDServices,
+  updateOPDService,
+} from "../../../redux/actions/admin/opdAdmin/services";
 
-const ManageHospital = (hospital) => {
-  const hospitalInput = {
+const ManageServices = (hospital) => {
+  const initialData = {
     name: "",
     address: "",
     contactNumber: "",
     description: "",
     pincode: "",
+    price: "",
     images: [],
   };
-  const [hospitalData, sethospitalData] = useState(hospitalInput);
+  const [services, setServices] = useState(initialData);
+  const [image, setImage] = useState([]);
   const classes = useStyles();
   const history = useHistory();
-  let id = hospital?.location?.state;
   const dispatch = useDispatch();
-  const store = useSelector((data) => data?.hospitals);
-  const data = store?.singleHospital?.data;
-  const [image, setImage] = useState([]);
+  const store = useSelector((state) => state);
+  const data = store?.doctors?.singleDoctor?.data;
+  const hospitals = store?.hospitals?.allHospitals?.data;
+  let service = hospital?.location?.state;
 
   useEffect(() => {
-    if (id) {
-      dispatch(getSingleHospital(id));
-    } else {
-      sethospitalData(hospitalInput);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    if (data) {
-      sethospitalData(data);
-      setImage(data?.images);
-    }
-  }, [data]);
+    setServices(service);
+  }, [service?.id]);
 
   const handleSubmit = async (e) => {
-    hospitalData.images = hospitalInput.images.concat(image);
     e.preventDefault();
-    if (id) {
+    services.images = initialData.images.concat(image);
+    console.log(services);
+    if (service?._id) {
       try {
-        dispatch(updateHospitals(id, hospitalData, history));
+        dispatch(updateOPDService(service._id, services, history));
       } catch (error) {
         console.log(error);
       }
     } else {
       try {
-        dispatch(addHospital(hospitalData, history));
+        dispatch(createOPDServices(services, history));
       } catch (error) {
         console.log(error);
       }
@@ -73,10 +67,10 @@ const ManageHospital = (hospital) => {
 
   return (
     <div className={classes.containerManage}>
-      <h1 style={{ marginTop: "0px", marginBottom: "20px" }}>Hospitals</h1>
+      <h1 style={{ marginTop: "0px", marginBottom: "20px" }}>Service</h1>
       <div className={classes.inputSection}>
         <ExitToAppIcon
-          onClick={() => history.push("/admin/Hospital")}
+          onClick={() => history.goBack("/admin/opd/services/")}
           style={{ cursor: "pointer", transform: "rotate(180deg)" }}
           fontSize="large"
           color="secondary"
@@ -88,7 +82,7 @@ const ManageHospital = (hospital) => {
             style={{ marginRight: "10px" }}
             color="primary"
           >
-            {id ? "Update" : "Save"}
+            Save
           </Button>
         </Box>
         <Grid container spacing={2}>
@@ -98,13 +92,29 @@ const ManageHospital = (hospital) => {
           <Grid item xs={7} md={10}>
             <TextField
               size="small"
-              value={hospitalData?.name}
+              value={services?.name}
               onChange={(e) =>
-                sethospitalData({ ...hospitalData, name: e.target.value })
+                setServices({ ...services, name: e.target.value })
               }
               style={{ marginTop: "10px", marginBottom: "10px" }}
               fullWidth
               type="text"
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={5} md={2}>
+            <Typography variant="h6">Price</Typography>
+          </Grid>
+          <Grid item xs={7} md={10}>
+            <TextField
+              size="small"
+              value={services?.price}
+              onChange={(e) =>
+                setServices({ ...services, price: e.target.value })
+              }
+              style={{ marginTop: "10px", marginBottom: "10px" }}
+              fullWidth
+              type="number"
               variant="outlined"
             />
           </Grid>
@@ -114,9 +124,9 @@ const ManageHospital = (hospital) => {
           <Grid item xs={7} md={10}>
             <TextField
               size="small"
-              value={hospitalData?.address}
+              value={services?.address}
               onChange={(e) =>
-                sethospitalData({ ...hospitalData, address: e.target.value })
+                setServices({ ...services, address: e.target.value })
               }
               style={{ marginTop: "10px", marginBottom: "10px" }}
               fullWidth
@@ -130,9 +140,9 @@ const ManageHospital = (hospital) => {
           <Grid item xs={7} md={10}>
             <TextField
               size="small"
-              value={hospitalData?.pincode}
+              value={services?.pincode}
               onChange={(e) =>
-                sethospitalData({ ...hospitalData, pincode: e.target.value })
+                setServices({ ...services, pincode: e.target.value })
               }
               style={{ marginTop: "10px", marginBottom: "10px" }}
               fullWidth
@@ -141,24 +151,21 @@ const ManageHospital = (hospital) => {
             />
           </Grid>
           <Grid item xs={5} md={2}>
-            <Typography variant="h6">
-              Hospital <br />
-              Contact No
-            </Typography>
+            <Typography variant="h6">Contact No</Typography>
           </Grid>
           <Grid item xs={7} md={10}>
             <TextField
               size="small"
-              value={hospitalData?.contactNumber}
+              value={services?.contactNumber}
               onChange={(e) =>
-                sethospitalData({
-                  ...hospitalData,
+                setServices({
+                  ...services,
                   contactNumber: e.target.value,
                 })
               }
               style={{ marginTop: "10px", marginBottom: "10px" }}
               fullWidth
-              type="text"
+              type="number"
               variant="outlined"
             />
           </Grid>
@@ -167,10 +174,10 @@ const ManageHospital = (hospital) => {
           </Grid>
           <Grid item xs={7} md={10}>
             <TextareaAutosize
-              value={hospitalData?.description}
+              value={services?.description}
               onChange={(e) =>
-                sethospitalData({
-                  ...hospitalData,
+                setServices({
+                  ...services,
                   description: e.target.value,
                 })
               }
@@ -182,15 +189,15 @@ const ManageHospital = (hospital) => {
           <Grid item xs={5} md={2}>
             <Typography variant="h6">Image</Typography>
           </Grid>
-          <Grid container direction="row">
+          <Grid container xs={7} md={10}>
             <Grid item xs={12} md={2}>
               <ImageCropper setImage={setImage} image={image} />
             </Grid>
             {image?.map((data, key) => (
               <Grid
                 item
-                xs={12}
                 key={key}
+                xs={12}
                 md={3}
                 style={{ marginLeft: "10px", marginTop: "10px" }}
               >
@@ -209,4 +216,4 @@ const ManageHospital = (hospital) => {
   );
 };
 
-export default ManageHospital;
+export default ManageServices;

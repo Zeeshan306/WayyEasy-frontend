@@ -67,27 +67,12 @@ const Admin = ({ children }) => {
     {
       text: "Dashboard",
       icon: <SubjectOutlined color="secondary" />,
-      path: "/admin/dashboard",
+      path: "/admin/opd/",
     },
     {
-      text: "Doctors",
+      text: "Services",
       icon: <AddCircleOutlineOutlined color="secondary" />,
-      path: "/admin/doctors",
-    },
-    {
-      text: "Hospital",
-      icon: <SubjectOutlined color="secondary" />,
-      path: "/admin/hospital",
-    },
-    {
-      text: "Rooms",
-      icon: <AddCircleOutlineOutlined color="secondary" />,
-      path: "/admin/rooms",
-    },
-    {
-      text: "Ratings & Reviews",
-      icon: <AddCircleOutlineOutlined color="secondary" />,
-      path: "/admin/reviews",
+      path: "/admin/opd/services/",
     },
   ];
 

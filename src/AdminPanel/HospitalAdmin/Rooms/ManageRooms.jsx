@@ -128,7 +128,7 @@ const ManageRoom = (hospital) => {
     setRoomDetail(delVal);
   };
 
-  const habdlleChangeRoomDetails = (data, index) => {
+  const handleChangeRoomDetails = (data, index) => {
     const values = [...roomDetail];
     values[index][data.target.name] = data.target.value;
     setRoomDetail(values);
@@ -198,7 +198,7 @@ const ManageRoom = (hospital) => {
                     size="small"
                     name="roomNo"
                     value={roomDetail.roomNo}
-                    onChange={(e) => habdlleChangeRoomDetails(e, index)}
+                    onChange={(e) => handleChangeRoomDetails(e, index)}
                     style={{ marginTop: "10px", marginBottom: "10px" }}
                     fullWidth
                     type="search"
@@ -217,7 +217,7 @@ const ManageRoom = (hospital) => {
                     <NativeSelect
                       name="available"
                       value={roomDetail.available}
-                      onChange={(e) => habdlleChangeRoomDetails(e, index)}
+                      onChange={(e) => handleChangeRoomDetails(e, index)}
                     >
                       <option default value={0}>
                         Select
