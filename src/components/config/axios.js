@@ -13,3 +13,21 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
+
+API.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  (err) => {
+    try {
+      const { status } = err?.response;
+      if (status === 500) {
+        console.log("err", err);
+        sessionStorage.removeItem("user");
+      }
+      return Promise.reject(err);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);

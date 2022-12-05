@@ -6,12 +6,8 @@
 
 .sectionOne {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-}
-
-.oneFirstHalf {
-    width: 55%;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
 }
 
 .oneFirstHalf h1 {
@@ -21,10 +17,16 @@
 
 .oneSecondHalf {
     position: relative;
-    width: 40%;
     align-items: flex-end;
 }
 
 .oneSecondHalf img {
     width: 90%;
+}
+
+@media screen and (max-width: 1000px) {
+    .sectionOne {
+        display: flex;
+        flex-direction: column;
+    }
 }

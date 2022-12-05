@@ -49,7 +49,7 @@ const Header = () => {
 
   useEffect(() => {
     setAuthUser(JSON.parse(localStorage.getItem("owner"))?.token);
-  }, [location]);
+  }, [JSON.parse(localStorage.getItem("owner"))]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -135,15 +135,17 @@ const Header = () => {
           About Us
         </a>
       </MenuItem>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={handleClickOpen}
-        style={{ margin: 5 }}
-      >
-        Become a Partner?
-      </Button>
-      {authUser?.token && (
+      {!authUser && (
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={handleClickOpen}
+          style={{ margin: 5 }}
+        >
+          Become a Partner?
+        </Button>
+      )}
+      {authUser && (
         <div>
           <MenuItem>
             <IconButton aria-label="show 4 new mails" color="inherit">
@@ -203,7 +205,13 @@ const Header = () => {
             As a Doctor
           </Button>
         </Grid>
-        <Grid style={{ display: "flex", justifyContent: "space-between", marginTop: 10 }}>
+        <Grid
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 10,
+          }}
+        >
           <Button
             variant="contained"
             onClick={() => toAdmin("pathLab")}
@@ -214,7 +222,7 @@ const Header = () => {
           <Button
             variant="contained"
             className={classes.btnStyle}
-            onClick={() => toAdmin("hospital")}
+            onClick={() => toAdmin("owner")}
             autoFocus
           >
             As a Hospital/Nursing Home
@@ -247,15 +255,17 @@ const Header = () => {
             <a href="/articles">Articles</a>
             <a href="/contact">Contact Us</a>
             <a href="/about">About Us</a>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={handleClickOpen}
-              style={{ marginTop: 5 }}
-            >
-              Become a Partner?
-            </Button>
-            {authUser?.token && (
+            {!authUser && (
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={handleClickOpen}
+                style={{ marginTop: 5 }}
+              >
+                Become a Partner?
+              </Button>
+            )}
+            {authUser && (
               <div>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                   <Badge badgeContent={4} color="secondary">

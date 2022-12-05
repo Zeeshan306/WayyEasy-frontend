@@ -1,1 +1,1 @@
-export const api = "https://wayy-easy-2.herokuapp.com/";
+export const api = "http://localhost:2001/";

@@ -17,6 +17,7 @@ import {
   signUp,
 } from "../../../redux/actions/admin/hospitalAdmin/owner";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const user = {
   firstName: "",
@@ -24,18 +25,24 @@ const user = {
   email: "",
   password: "",
   confirmPassword: "",
+  role: "",
 };
 
 const Register = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(user);
   const [adminType, setAdminType] = useState(null);
 
   useEffect(() => {
-    setAdminType(sessionStorage.getItem("adminType"));
+    setAdminType();
+    setFormData({
+      ...formData,
+      role: sessionStorage.getItem("adminType"),
+    });
   }, [sessionStorage.getItem("adminType")]);
 
   const handleSubmit = (e) => {

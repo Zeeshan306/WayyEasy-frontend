@@ -5,13 +5,26 @@ export const logIn = (owner, history) => async (dispatch) => {
   try {
     const { data } = await LogIn(owner);
     dispatch({ type: ownersConst.LOGIN_OWNERS, payload: data });
-    history.push("/admin");
-  } catch (error) {
-    if (error.response.status == 406) {
-      alert("Invalid credentials.");
-    } else {
-      alert("Something went wrong. For a while please check your connection.");
+    switch (data?.user?.role) {
+      case "admin":
+      case "owner":
+        history.push("/admin");
+        break;
+      case "doctor":
+        history.push("/admin/doctor");
+        break;
+      case "pathLab":
+        history.push("/admin/pathLab");
+        break;
+      case "opd":
+        history.push("/admin/opd");
+        break;
+      default:
+        alert("Seomthing went wrong. Please try again later.");
+        break;
     }
+  } catch (error) {
+    alert(error?.response?.data);
   }
 };
 
@@ -19,7 +32,24 @@ export const signUp = (owner, history) => async (dispatch) => {
   try {
     const { data } = await SignUp(owner);
     dispatch({ type: ownersConst.SIGNUP_OWNERS, payload: data });
-    history.push("/admin");
+    switch (data?.user?.role) {
+      case "admin":
+      case "owner":
+        history.push("/admin");
+        break;
+      case "doctor":
+        history.push("/admin/doctor");
+        break;
+      case "pathLab":
+        history.push("/admin/pathLab");
+        break;
+      case "opd":
+        history.push("/admin/opd");
+        break;
+      default:
+        alert("Seomthing went wrong. Please try again later.");
+        break;
+    }
   } catch (error) {
     console.log(error);
   }

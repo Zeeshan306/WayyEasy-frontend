@@ -9,7 +9,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@material-ui/icons";
 import { useDispatch } from "react-redux";
-import Header from "../../components/header/Header";
 
 const drawerWidth = 240;
 
@@ -100,7 +99,6 @@ const Admin = ({ children }) => {
 
   return (
     <div className={classes.root}>
-      <Header />
       <div className={classes.mainContainer}>
         <Drawer
           className={classes.drawer}
