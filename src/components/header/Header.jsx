@@ -267,7 +267,11 @@ const Header = () => {
             )}
             {authUser && (
               <div>
-                <IconButton aria-label="show 4 new mails" color="inherit">
+                <IconButton
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                  onClick={() => history.push("/admin/notifications")}
+                >
                   <Badge badgeContent={4} color="secondary">
                     <MailIcon />
                   </Badge>

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
 //Hospital Admin Routes
@@ -20,17 +19,19 @@ import OPDServices from "./AdminPanel/OPDAdmin/Services";
 import OPDDashboard from "./AdminPanel/OPDAdmin/Dashboard/Dashboard.jsx";
 import OPDService from "./AdminPanel/OPDAdmin/Services/Service";
 import ManageServices from "./AdminPanel/OPDAdmin/Services/ManageServices";
+import ServiceView from "./AdminPanel/OPDAdmin/Services/ServiceView";
 
 //User Routes
 import Header from "./components/header/Header";
 import Home from "./containers/Home/Home";
+import Notifications from "./containers/Notifications/Notifications";
+
 import AboutUs from "./containers/About/AboutUs";
 import Footer from "./components/footer/Footer";
-
 import "./App.css";
-import ServiceView from "./AdminPanel/OPDAdmin/Services/ServiceView";
 
 function App() {
+
   return (
     <div className="App">
       <Router>

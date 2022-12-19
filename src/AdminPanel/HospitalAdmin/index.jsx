@@ -8,8 +8,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@material-ui/icons";
+
 import { useDispatch } from "react-redux";
 
+// firebase
+import { collection, getDocs } from "firebase/firestore";
+import { firebaseDb } from "../../FireBase/Firebase";
 const drawerWidth = 240;
 
 const useStyles = makeStyles({
@@ -48,8 +52,34 @@ const Admin = ({ children }) => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
-  const { user } = JSON.parse(localStorage.getItem("owner"));
+
   const [socket, setSocket] = useState(null);
+  const [doctorsReview, setdoctorsReview] = useState();
+
+  const { user } = JSON.parse(localStorage.getItem("owner"));
+  const owner = JSON.parse(localStorage.getItem("owner"))?.user;
+
+  let menuItems = null;
+
+  if (owner.role === "admin") {
+    const fetchPost = async () => {
+      await getDocs(collection(firebaseDb, "doctors")).then((querySnapshot) => {
+        querySnapshot.docs.map((doc) =>
+          console.log(doc.data().name)
+          //   {
+          //   ...doc.data(),
+          // }
+        );
+        // setdoctorsReview(newData);
+      });
+    };
+
+    useEffect(() => {
+      fetchPost();
+    }, []);
+  }
+
+  console.log("request", doctorsReview);
 
   // console.log("data", user?._id);
 
@@ -63,7 +93,7 @@ const Admin = ({ children }) => {
   //   });
   // }, [socket]);
 
-  const menuItems = [
+  menuItems = [
     {
       text: "Dashboard",
       icon: <SubjectOutlined color="secondary" />,
