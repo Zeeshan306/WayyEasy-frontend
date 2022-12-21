@@ -23,6 +23,10 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
+//firebase
+import { collection, getDocs } from "firebase/firestore";
+import { firebaseDb } from "../../FireBase/Firebase";
+
 import { logOut } from "../../redux/actions/admin/hospitalAdmin/owner";
 import logo from "../../files/Images/icon.png";
 import useStyles from "./styles";
@@ -34,8 +38,44 @@ const Header = () => {
   const dispatch = useDispatch();
   const [authUser, setAuthUser] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [doctorsReview, setDoctorsReview] = useState([]);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const { user } = JSON.parse(localStorage.getItem("owner"));
+
+  const fetchPost = async () => {
+    await getDocs(collection(firebaseDb, "doctors")).then((querySnapshot) => {
+      querySnapshot.docs.map((doc) => {
+        if (doctorsReview.length > 0) {
+          doctorsReview.find((doctor) => {
+            if (doctor?.mongoId != doc.data()?.mongoId) {
+              setDoctorsReview([...doctorsReview, doc.data()]);
+            }
+          });
+        } else {
+          setDoctorsReview([...doctorsReview, doc.data()]);
+        }
+      });
+    });
+  };
+
+  useEffect(() => {
+    setAuthUser(JSON.parse(localStorage.getItem("owner"))?.token);
+  }, [JSON.parse(localStorage.getItem("owner"))]);
+
+  useEffect(() => {
+    user?.role === "admin" && fetchPost();
+  }, [location]);
+
+  const toNotificationDetails = () => {
+    history.replace({
+      pathname: "/admin/notifications",
+      state: doctorsReview,
+    });
+  };
 
   const handleClickOpen = () => {
     setDialogOpen(true);
@@ -46,13 +86,6 @@ const Header = () => {
     history.push("/admin/auth/");
     setDialogOpen(false);
   };
-
-  useEffect(() => {
-    setAuthUser(JSON.parse(localStorage.getItem("owner"))?.token);
-  }, [JSON.parse(localStorage.getItem("owner"))]);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -148,8 +181,12 @@ const Header = () => {
       {authUser && (
         <div>
           <MenuItem>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+            <IconButton
+              aria-label="show 4 new mails"
+              color="inherit"
+              onClick={toNotificationDetails}
+            >
+              <Badge badgeContent={doctorsReview.length} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -270,9 +307,9 @@ const Header = () => {
                 <IconButton
                   aria-label="show 4 new mails"
                   color="inherit"
-                  onClick={() => history.push("/admin/notifications")}
+                  onClick={toNotificationDetails}
                 >
-                  <Badge badgeContent={4} color="secondary">
+                  <Badge badgeContent={doctorsReview?.length} color="secondary">
                     <MailIcon />
                   </Badge>
                 </IconButton>

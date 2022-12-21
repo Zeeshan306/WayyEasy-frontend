@@ -25,6 +25,7 @@ import ServiceView from "./AdminPanel/OPDAdmin/Services/ServiceView";
 import Header from "./components/header/Header";
 import Home from "./containers/Home/Home";
 import Notifications from "./containers/Notifications/Notifications";
+import Notification from "./containers/Notifications/Notification";
 
 import AboutUs from "./containers/About/AboutUs";
 import Footer from "./components/footer/Footer";
@@ -120,6 +121,9 @@ function App() {
                     exact
                     component={ManageRooms}
                   />
+                  {/* notifications */}
+                  <Route path="/admin/notifications" exact component={Notifications} />
+                  <Route path="/admin/notification/:id" exact component={Notification} />
                 </Switch>
               </Admin>
             )}

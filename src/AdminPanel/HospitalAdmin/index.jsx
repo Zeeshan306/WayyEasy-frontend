@@ -11,9 +11,6 @@ import { AddCircleOutlineOutlined, SubjectOutlined } from "@material-ui/icons";
 
 import { useDispatch } from "react-redux";
 
-// firebase
-import { collection, getDocs } from "firebase/firestore";
-import { firebaseDb } from "../../FireBase/Firebase";
 const drawerWidth = 240;
 
 const useStyles = makeStyles({
@@ -54,32 +51,72 @@ const Admin = ({ children }) => {
   const dispatch = useDispatch();
 
   const [socket, setSocket] = useState(null);
-  const [doctorsReview, setdoctorsReview] = useState();
-
-  const { user } = JSON.parse(localStorage.getItem("owner"));
-  const owner = JSON.parse(localStorage.getItem("owner"))?.user;
-
   let menuItems = null;
 
-  if (owner.role === "admin") {
-    const fetchPost = async () => {
-      await getDocs(collection(firebaseDb, "doctors")).then((querySnapshot) => {
-        querySnapshot.docs.map((doc) =>
-          console.log(doc.data().name)
-          //   {
-          //   ...doc.data(),
-          // }
-        );
-        // setdoctorsReview(newData);
-      });
-    };
+  const { user } = JSON.parse(localStorage.getItem("owner"));
 
-    useEffect(() => {
-      fetchPost();
-    }, []);
+  if (user?.role === "admin") {
+    menuItems = [
+      {
+        text: "Dashboard",
+        icon: <SubjectOutlined color="secondary" />,
+        path: "/admin/dashboard",
+      },
+      {
+        text: "Doctors",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/doctors",
+      },
+      {
+        text: "Hospital",
+        icon: <SubjectOutlined color="secondary" />,
+        path: "/admin/hospital",
+      },
+      {
+        text: "Rooms",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/rooms",
+      },
+      {
+        text: "Ratings & Reviews",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/reviews",
+      },
+      {
+        text: "Blogs",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/blogs",
+      },
+    ];
+  } else {
+    menuItems = [
+      {
+        text: "Dashboard",
+        icon: <SubjectOutlined color="secondary" />,
+        path: "/admin/dashboard",
+      },
+      {
+        text: "Doctors",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/doctors",
+      },
+      {
+        text: "Hospital",
+        icon: <SubjectOutlined color="secondary" />,
+        path: "/admin/hospital",
+      },
+      {
+        text: "Rooms",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/rooms",
+      },
+      {
+        text: "Ratings & Reviews",
+        icon: <AddCircleOutlineOutlined color="secondary" />,
+        path: "/admin/reviews",
+      },
+    ];
   }
-
-  console.log("request", doctorsReview);
 
   // console.log("data", user?._id);
 
@@ -92,34 +129,6 @@ const Admin = ({ children }) => {
   //     console.log(data);
   //   });
   // }, [socket]);
-
-  menuItems = [
-    {
-      text: "Dashboard",
-      icon: <SubjectOutlined color="secondary" />,
-      path: "/admin/dashboard",
-    },
-    {
-      text: "Doctors",
-      icon: <AddCircleOutlineOutlined color="secondary" />,
-      path: "/admin/doctors",
-    },
-    {
-      text: "Hospital",
-      icon: <SubjectOutlined color="secondary" />,
-      path: "/admin/hospital",
-    },
-    {
-      text: "Rooms",
-      icon: <AddCircleOutlineOutlined color="secondary" />,
-      path: "/admin/rooms",
-    },
-    {
-      text: "Ratings & Reviews",
-      icon: <AddCircleOutlineOutlined color="secondary" />,
-      path: "/admin/reviews",
-    },
-  ];
 
   return (
     <div className={classes.root}>
