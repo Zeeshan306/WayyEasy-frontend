@@ -44,3 +44,8 @@ export const servicesOPDConst = {
   EDIT_SERVICE: "EDIT_SERVICE",
   DELETE_SERVICE: "DELETE_SERVICE",
 };
+
+//Physicians
+export const physiciansConst = {
+  EDIT_PHYSICIAN: "EDIT_PHYSICIAN",
+};

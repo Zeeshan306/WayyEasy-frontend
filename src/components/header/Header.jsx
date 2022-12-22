@@ -43,20 +43,35 @@ const Header = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const { user } = JSON.parse(localStorage.getItem("owner"));
+  let dataList = null;
+  const user = JSON.parse(localStorage.getItem("owner"))?.user;
 
   const fetchPost = async () => {
     await getDocs(collection(firebaseDb, "doctors")).then((querySnapshot) => {
       querySnapshot.docs.map((doc) => {
         if (doctorsReview.length > 0) {
+          console.log(doctorsReview.length);
           doctorsReview.find((doctor) => {
-            if (doctor?.mongoId != doc.data()?.mongoId) {
-              setDoctorsReview([...doctorsReview, doc.data()]);
+            if (
+              doctor?.data?.mongiId &&
+              doctor?.data?.mongoId != doc.data()?.mongoId
+            ) {
+              if (doc.data().status == "pending")
+                console.log("data is pending", doc.data());
+              console.log("data is pending", doctor?.data);
+              console.log("data is pending", doc.data()?.mongoId);
+              dataList = {
+                data: doc.data(),
+                firebaseId: doc.id,
+              };
+              setDoctorsReview([...doctorsReview, dataList]);
             }
           });
         } else {
-          setDoctorsReview([...doctorsReview, doc.data()]);
+          if (doc.data().status == "pending") {
+            dataList = { data: doc.data(), firebaseId: doc.id };
+            setDoctorsReview([dataList]);
+          }
         }
       });
     });

@@ -10,6 +10,9 @@ import ratings from "./hospitalAdmin/ratings";
 //opd reducers
 import OPDServices from "./opdAdmin/services";
 
+//physicians
+import Physicians from "./physiciansAdmin/physicians";
+
 export default combineReducers({
   doctors,
   hospitals,
@@ -17,4 +20,5 @@ export default combineReducers({
   rooms,
   ratings,
   OPDServices,
+  Physicians,
 });

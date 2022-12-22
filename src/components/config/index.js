@@ -42,3 +42,7 @@ export const FetchOPDService = (id) => API.get(`/opdRoutes/view/${id}`);
 export const EditOPDservice = (id, data) =>
   API.patch(`/opdRoutes/edit/${id}`, data);
 export const DeleteOPDService = (id) => API.delete(`/opdRoutes/remove/${id}`);
+
+//Physicians API
+export const EditPhysicians = (id, data) =>
+  API.patch(`/physicians/edit/${id}`, data);

@@ -7,34 +7,37 @@ import {
   Button,
 } from "@material-ui/core";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import not from "./notification.module.css";
 
 const Notifications = () => {
   const history = useHistory();
-  const notificationList = history?.location?.state;
+  const dispatch = useDispatch();
+  let notifications = history?.location?.state;
 
   const notificationDetails = (notification) => {
     history.push({
-      pathname: `/admin/notification/${notification.mongoId}`,
+      pathname: `/admin/notification/${notification.firebaseId}`,
       state: notification,
     });
   };
 
   return (
     <Container spacing={2} className={not.mainContainer}>
-      {notificationList.map((notification) => (
-        <Card className={not.cardContainer} key={notification?.mongoId}>
+      {notifications.map((notification) => (
+        <Card className={not.cardContainer} key={notification.firebaseId}>
           <CardContent>
             <Typography variant="h4" color="initial">
-              {notification?.name}
+              {notification?.data?.name}
             </Typography>
             <Typography variant="h6" color="initial">
-              {notification?.description}
+              {notification?.data?.description}
             </Typography>
             <Typography variant="h6" color="initial">
-              {notification?.specialityType}
+              {notification?.data?.specialityType}
             </Typography>
           </CardContent>
           <CardActions className={not.actionBtns}>
