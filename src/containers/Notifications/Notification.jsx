@@ -9,6 +9,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../FireBase/Firebase";
+
 import { editPhysicians } from "../../redux/actions/admin/physiciansAdmin/physicians";
 
 import not from "./notification.module.css";
@@ -18,7 +21,24 @@ const Notification = () => {
   const dispatch = useDispatch();
   let notification = history?.location?.state;
   const [updatedData, setUpdatedData] = useState(notification.data);
+
   const updateDoctor = async (notification) => {
+    const docRef = doc(db, "doctors", notification.firebaseId);
+    await updateDoc(docRef, {
+      name: notification.data?.name,
+      address: "",
+      description: notification.data?.description,
+      email: "",
+      image: "",
+      mobile: "",
+      mongoId: notification.data?.mongoId,
+      price: notification.data?.price,
+      proofDocs: "",
+      qualifiation: notification.data?.qualifiation,
+      specialityType: notification.data?.specialityType,
+      status: "active",
+    });
+
     setUpdatedData({ ...updatedData, updatedData: { status: "active" } });
     dispatch(editPhysicians(notification.data.mongoId, updatedData, history));
   };

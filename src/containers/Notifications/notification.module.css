@@ -3,6 +3,10 @@
     padding-top: 30px;
 }
 
+.cardContainer {
+    margin-top: 10px;
+}
+
 .media {
     width: 500px;
     height: 500px;

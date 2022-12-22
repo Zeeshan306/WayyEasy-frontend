@@ -24,8 +24,8 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 //firebase
-import { collection, getDocs } from "firebase/firestore";
-import { firebaseDb } from "../../FireBase/Firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../FireBase/Firebase";
 
 import { logOut } from "../../redux/actions/admin/hospitalAdmin/owner";
 import logo from "../../files/Images/icon.png";
@@ -34,7 +34,6 @@ import useStyles from "./styles";
 const Header = () => {
   const classes = useStyles();
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
   const [authUser, setAuthUser] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,33 +46,28 @@ const Header = () => {
   const user = JSON.parse(localStorage.getItem("owner"))?.user;
 
   const fetchPost = async () => {
-    await getDocs(collection(firebaseDb, "doctors")).then((querySnapshot) => {
-      querySnapshot.docs.map((doc) => {
-        if (doctorsReview.length > 0) {
-          console.log(doctorsReview.length);
-          doctorsReview.find((doctor) => {
-            if (
-              doctor?.data?.mongiId &&
-              doctor?.data?.mongoId != doc.data()?.mongoId
-            ) {
-              if (doc.data().status == "pending")
-                console.log("data is pending", doc.data());
-              console.log("data is pending", doctor?.data);
-              console.log("data is pending", doc.data()?.mongoId);
-              dataList = {
-                data: doc.data(),
-                firebaseId: doc.id,
-              };
-              setDoctorsReview([...doctorsReview, dataList]);
-            }
-          });
-        } else {
-          if (doc.data().status == "pending") {
+    const q = query(
+      collection(db, "doctors"),
+      where("status", "==", "pending")
+    );
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      if (doctorsReview.length == 0) {
+        dataList = { data: doc.data(), firebaseId: doc.id };
+        setDoctorsReview((prev) => {
+          return [...prev, dataList];
+        });
+      } else {
+        doctorsReview.map((data) => {
+          if (data.data.mongiId != doc.data().mongiId) {
             dataList = { data: doc.data(), firebaseId: doc.id };
-            setDoctorsReview([dataList]);
+            setDoctorsReview((prev) => {
+              return [...prev, dataList];
+            });
           }
-        }
-      });
+        });
+      }
     });
   };
 
@@ -83,7 +77,7 @@ const Header = () => {
 
   useEffect(() => {
     user?.role === "admin" && fetchPost();
-  }, [location]);
+  }, []);
 
   const toNotificationDetails = () => {
     history.replace({
