@@ -9,12 +9,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from "../../FireBase/Firebase";
 
 import { editPhysicians } from "../../redux/actions/admin/physiciansAdmin/physicians";
 
 import not from "./notification.module.css";
+import { useEffect } from "react";
 
 const Notification = () => {
   const history = useHistory();
@@ -26,22 +27,26 @@ const Notification = () => {
     const docRef = doc(db, "doctors", notification.firebaseId);
     await updateDoc(docRef, {
       name: notification.data?.name,
-      address: "",
+      address: deleteField(),
       description: notification.data?.description,
-      email: "",
-      image: "",
-      mobile: "",
+      email: deleteField(),
+      image: deleteField(),
+      mobile: deleteField(),
       mongoId: notification.data?.mongoId,
       price: notification.data?.price,
-      proofDocs: "",
+      proofDocs: deleteField(),
       qualifiation: notification.data?.qualifiation,
       specialityType: notification.data?.specialityType,
       status: "active",
     });
 
-    setUpdatedData({ ...updatedData, updatedData: { status: "active" } });
     dispatch(editPhysicians(notification.data.mongoId, updatedData, history));
   };
+
+  useEffect(() => {
+    setUpdatedData({ ...updatedData, status: "active" });
+  }, []);
+
   return (
     <Container>
       <Grid container direction="row" justifyContent="space-evenly">
