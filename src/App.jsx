@@ -26,13 +26,13 @@ import Header from "./components/header/Header";
 import Home from "./containers/Home/Home";
 import Notifications from "./containers/Notifications/Notifications";
 import Notification from "./containers/Notifications/Notification";
-
 import AboutUs from "./containers/About/AboutUs";
+import Privacy from "./containers/Privacy/Privacy";
 import Footer from "./components/footer/Footer";
+
 import "./App.css";
 
 function App() {
-
   return (
     <div className="App">
       <Router>
@@ -41,6 +41,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={AboutUs} />
           <Route path="/admin/auth" exact component={Auth} />
+          <Route path="/privacy" exact component={Privacy} />
           <PrivateRoute
             path="/admin/opd/"
             component={() => (
@@ -122,8 +123,16 @@ function App() {
                     component={ManageRooms}
                   />
                   {/* notifications */}
-                  <Route path="/admin/notifications" exact component={Notifications} />
-                  <Route path="/admin/notification/:id" exact component={Notification} />
+                  <Route
+                    path="/admin/notifications"
+                    exact
+                    component={Notifications}
+                  />
+                  <Route
+                    path="/admin/notification/:id"
+                    exact
+                    component={Notification}
+                  />
                 </Switch>
               </Admin>
             )}

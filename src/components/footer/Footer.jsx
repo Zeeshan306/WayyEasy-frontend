@@ -22,8 +22,8 @@ const Footer = () => {
       <div className={foot.section2}>
         <a href="#">WayyEasy Official Blog</a>
         <a href="#">WayyEasy Official Circle</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms and Conditions</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms$conditions">Terms and Conditions</a>
       </div>
       <div className={foot.section3}>
         <h3>Follow Us</h3>

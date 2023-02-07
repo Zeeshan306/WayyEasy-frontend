@@ -109,23 +109,20 @@
   text-align: center;
 }
 
-.mSContainer h1,
-.mSContainer p {
-  margin: auto;
-}
-
 .mSContainer h1 {
-  font-size: 2.2em;
-}
-
-.mSContainer p {
-  color: #b4b4b4;
+  font-size: 2em;
 }
 
 /* articles */
 .articlesContainer {
+  position: relative;
   width: 100%;
+  margin-top: 100px;
   text-align: center;
+}
+
+.cards {
+  position: relative;
 }
 
 /* media query */

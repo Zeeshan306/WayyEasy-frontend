@@ -23,19 +23,21 @@ const Notification = () => {
   let notification = history?.location?.state;
   const [updatedData, setUpdatedData] = useState(notification.data);
 
+  console.log(notification.data);
   const updateDoctor = async (notification) => {
     const docRef = doc(db, "doctors", notification.firebaseId);
     await updateDoc(docRef, {
       name: notification.data?.name,
       address: deleteField(),
       description: notification.data?.description,
-      email: deleteField(),
+      email: notification.data?.email,
       image: deleteField(),
-      mobile: deleteField(),
+      mobile: notification.data?.mobile,
       mongoId: notification.data?.mongoId,
       price: notification.data?.price,
       proofDocs: deleteField(),
-      qualifiation: notification.data?.qualifiation,
+      fcmToken: notification.data?.fcmToken,
+      qualifiation: notification.data?.qualification,
       specialityType: notification.data?.specialityType,
       status: "active",
     });
@@ -75,7 +77,7 @@ const Notification = () => {
       </Grid>
       <Grid container direction="row" justifyContent="space-evenly">
         <Typography>Qualifiation:</Typography>
-        <Typography>{notification?.data?.qualifiation}</Typography>
+        <Typography>{notification?.data?.qualification}</Typography>
       </Grid>
       <Grid container direction="row" justifyContent="space-evenly">
         <Typography>Speciality:</Typography>

@@ -203,7 +203,7 @@ const Header = () => {
           </MenuItem>
           <MenuItem>
             <IconButton aria-label="show 11 new notifications" color="inherit">
-              <Badge badgeContent={11} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -326,7 +326,7 @@ const Header = () => {
                   aria-label="show 17 new notifications"
                   color="inherit"
                 >
-                  <Badge badgeContent={17} color="secondary">
+                  <Badge badgeContent={0} color="secondary">
                     <NotificationsIcon />
                   </Badge>
                 </IconButton>
