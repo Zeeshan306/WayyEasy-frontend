@@ -36,11 +36,7 @@
 }
 
 .section3 a img {
-    width: 40px;
-}
-
-.section3 a:nth-child(3) {
-    opacity: 0.75;
+    width: 36px;
 }
 
 .section3 h3 {
