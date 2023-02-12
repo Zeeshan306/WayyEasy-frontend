@@ -4,7 +4,7 @@ import React from "react";
 import logo from "../../files/Images/icon.png";
 import fb from "../../files/Images/fb.png";
 import insta from "../../files/Images/insta.png";
-import linkedIn from "../../files/Images/linkedIn.png";
+import linkedIn from "../../files/Images/linke.png";
 import foot from "./footer.module.css";
 
 const Footer = () => {
