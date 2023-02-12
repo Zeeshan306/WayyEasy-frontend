@@ -35,6 +35,10 @@
     margin-top: 20px;
 }
 
+.section3 a:nth-child(3) {
+    opacity: 0.71;
+}
+
 .section3 a img {
     width: 36px;
 }
