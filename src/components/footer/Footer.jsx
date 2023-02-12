@@ -4,7 +4,7 @@ import React from "react";
 import logo from "../../files/Images/icon.png";
 import fb from "../../files/Images/fb.png";
 import insta from "../../files/Images/insta.png";
-// import linkedIn from "../../files/Images/linkedIn.png";
+import linkedIn from "../../files/Images/linkedIn.png";
 import foot from "./footer.module.css";
 
 const Footer = () => {
@@ -31,8 +31,7 @@ const Footer = () => {
           <img src={fb} alt="social-media" />
         </a>
         <a href="https://www.linkedin.com/company/wayyeasy/" target="_blank">
-          {/* <img src={linkedIn} alt="social-media" /> */}
-          LinkedIn
+          <img src={linkedIn} alt="social-media" />
         </a>
         <a href="https://www.instagram.com/wayyeasy/" target="_blank">
           <img style={{ width: "32px" }} src={insta} alt="social-media" />

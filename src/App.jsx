@@ -36,109 +36,116 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" exact component={AboutUs} />
-          <Route path="/admin/auth" exact component={Auth} />
-          <Route path="/privacy" exact component={Privacy} />
-          <PrivateRoute
-            path="/admin/opd/"
-            component={() => (
-              <OPDAdmin>
-                <Switch>
-                  <Route
-                    path="/admin/opd/services/"
-                    exact
-                    component={OPDServices}
-                  />
-                  <Route
-                    path="/admin/opd/services/manageServices/"
-                    exact
-                    component={ManageServices}
-                  />
-                  <Route
-                    path="/admin/opd/services/manageServices/:id"
-                    exact
-                    component={ManageServices}
-                  />
-                  <Route
-                    path="/admin/opd/services/service/"
-                    exact
-                    component={OPDService}
-                  />
-                  <Route
-                    path="/admin/opd/services/service/:id"
-                    exact
-                    component={ServiceView}
-                  />
-                  <Route path="/admin/opd/" exact component={OPDDashboard} />
-                </Switch>
-              </OPDAdmin>
-            )}
-          />
-          <PrivateRoute
-            path="/admin"
-            component={() => (
-              <Admin>
-                <Switch>
-                  {/* Dashboard routes */}
-                  <Route path="/admin" exact component={Dashboard} />
-                  {/* Doctors routes */}
-                  <Route path="/admin/doctors" exact component={Doctors} />
-                  <Route
-                    path="/admin/doctors/managedoctors"
-                    exact
-                    component={ManageDoctors}
-                  />
-                  <Route
-                    path="/admin/doctors/managedoctors/:id"
-                    exact
-                    component={ManageDoctors}
-                  />
-                  {/* Hosptal routes */}
-                  <Route path="/admin/hospital" exact component={Hospital} />
-                  <Route
-                    path="/admin/hospital/managehospital"
-                    exact
-                    component={ManageHospital}
-                  />
-                  <Route
-                    path="/admin/hospital/managehospital/:id"
-                    exact
-                    component={ManageHospital}
-                  />
-                  {/* Review routes */}
-                  <Route path="/admin/reviews" exact component={Reviews} />
-                  {/* Room routes */}
-                  <Route path="/admin/rooms" exact component={Rooms} />
-                  <Route
-                    path="/admin/room/manageRoom"
-                    exact
-                    component={ManageRooms}
-                  />
-                  <Route
-                    path="/admin/room/manageRoom/:id"
-                    exact
-                    component={ManageRooms}
-                  />
-                  {/* notifications */}
-                  <Route
-                    path="/admin/notifications"
-                    exact
-                    component={Notifications}
-                  />
-                  <Route
-                    path="/admin/notification/:id"
-                    exact
-                    component={Notification}
-                  />
-                </Switch>
-              </Admin>
-            )}
-          />
-        </Switch>
-        <Footer />
+        <Router>
+          <Switch>
+            <Route path="/privacy/mobile" exact component={Privacy} />
+          </Switch>
+        </Router>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" exact component={AboutUs} />
+            <Route path="/admin/auth" exact component={Auth} />
+            <Route path="/privacy" exact component={Privacy} />
+            <PrivateRoute
+              path="/admin/opd/"
+              component={() => (
+                <OPDAdmin>
+                  <Switch>
+                    <Route
+                      path="/admin/opd/services/"
+                      exact
+                      component={OPDServices}
+                    />
+                    <Route
+                      path="/admin/opd/services/manageServices/"
+                      exact
+                      component={ManageServices}
+                    />
+                    <Route
+                      path="/admin/opd/services/manageServices/:id"
+                      exact
+                      component={ManageServices}
+                    />
+                    <Route
+                      path="/admin/opd/services/service/"
+                      exact
+                      component={OPDService}
+                    />
+                    <Route
+                      path="/admin/opd/services/service/:id"
+                      exact
+                      component={ServiceView}
+                    />
+                    <Route path="/admin/opd/" exact component={OPDDashboard} />
+                  </Switch>
+                </OPDAdmin>
+              )}
+            />
+            <PrivateRoute
+              path="/admin"
+              component={() => (
+                <Admin>
+                  <Switch>
+                    {/* Dashboard routes */}
+                    <Route path="/admin" exact component={Dashboard} />
+                    {/* Doctors routes */}
+                    <Route path="/admin/doctors" exact component={Doctors} />
+                    <Route
+                      path="/admin/doctors/managedoctors"
+                      exact
+                      component={ManageDoctors}
+                    />
+                    <Route
+                      path="/admin/doctors/managedoctors/:id"
+                      exact
+                      component={ManageDoctors}
+                    />
+                    {/* Hosptal routes */}
+                    <Route path="/admin/hospital" exact component={Hospital} />
+                    <Route
+                      path="/admin/hospital/managehospital"
+                      exact
+                      component={ManageHospital}
+                    />
+                    <Route
+                      path="/admin/hospital/managehospital/:id"
+                      exact
+                      component={ManageHospital}
+                    />
+                    {/* Review routes */}
+                    <Route path="/admin/reviews" exact component={Reviews} />
+                    {/* Room routes */}
+                    <Route path="/admin/rooms" exact component={Rooms} />
+                    <Route
+                      path="/admin/room/manageRoom"
+                      exact
+                      component={ManageRooms}
+                    />
+                    <Route
+                      path="/admin/room/manageRoom/:id"
+                      exact
+                      component={ManageRooms}
+                    />
+                    {/* notifications */}
+                    <Route
+                      path="/admin/notifications"
+                      exact
+                      component={Notifications}
+                    />
+                    <Route
+                      path="/admin/notification/:id"
+                      exact
+                      component={Notification}
+                    />
+                  </Switch>
+                </Admin>
+              )}
+            />
+          </Switch>
+          <Footer />
+        </Router>
       </Router>
     </div>
   );

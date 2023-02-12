@@ -10,10 +10,10 @@ lerna-debug.log*
 /node_modules
 /.pnp
 .pnp.js
-dist
-dist-ssr
+# dist
+# dist-ssr
 *.local
-build
+# build
 
 # Editor directories and files
 .vscode/*

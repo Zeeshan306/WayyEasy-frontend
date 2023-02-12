@@ -34,6 +34,7 @@ import useStyles from "./styles";
 const Header = () => {
   const classes = useStyles();
   const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
   const [authUser, setAuthUser] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -73,7 +74,7 @@ const Header = () => {
 
   useEffect(() => {
     setAuthUser(JSON.parse(localStorage.getItem("owner"))?.token);
-  }, [JSON.parse(localStorage.getItem("owner"))]);
+  }, [JSON.parse(localStorage.getItem("owner")), location]);
 
   useEffect(() => {
     user?.role === "admin" && fetchPost();
@@ -295,7 +296,7 @@ const Header = () => {
             paddingBottom: "30px",
           }}
         >
-          <img src={logo} alt="brand-icon" />
+          <img src={logo} className={classes.brandLogo} alt="brand-icon" />
           <div className={classes.sectionDesktop}>
             <a href="/">Home</a>
             <a href="/articles">Articles</a>

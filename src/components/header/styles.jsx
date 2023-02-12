@@ -10,6 +10,11 @@ export default makeStyles((theme) => ({
       display: "block",
     },
   },
+  brandLogo: {
+    [theme.breakpoints.up("sm")]: {
+      width: "20ch",
+    },
+  },
   inputRoot: {
     color: "inherit",
   },

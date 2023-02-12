@@ -32,8 +32,15 @@
 
 .section2 a {
     text-decoration: none;
-    color: black;
     margin-top: 20px;
+}
+
+.section3 a img {
+    width: 40px;
+}
+
+.section3 a:nth-child(3) {
+    opacity: 0.75;
 }
 
 .section3 h3 {
