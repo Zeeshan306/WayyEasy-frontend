@@ -23,8 +23,9 @@ const Notification = () => {
   let notification = history?.location?.state;
   const [updatedData, setUpdatedData] = useState(notification.data);
 
-  console.log(notification.data);
   const updateDoctor = async (notification) => {
+    dispatch(editPhysicians(notification.data.mongoId, updatedData, history));
+
     const docRef = doc(db, "doctors", notification.firebaseId);
     await updateDoc(docRef, {
       name: notification.data?.name,
@@ -41,8 +42,6 @@ const Notification = () => {
       specialityType: notification.data?.specialityType,
       status: "active",
     });
-
-    dispatch(editPhysicians(notification.data.mongoId, updatedData, history));
   };
 
   useEffect(() => {
