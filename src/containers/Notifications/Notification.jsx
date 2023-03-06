@@ -28,18 +28,9 @@ const Notification = () => {
 
     const docRef = doc(db, "doctors", notification.firebaseId);
     await updateDoc(docRef, {
-      name: notification.data?.name,
       address: deleteField(),
-      description: notification.data?.description,
-      email: notification.data?.email,
       image: deleteField(),
-      mobile: notification.data?.mobile,
-      mongoId: notification.data?.mongoId,
-      price: notification.data?.price,
       proofDocs: deleteField(),
-      fcmToken: notification.data?.fcmToken,
-      qualifiation: notification.data?.qualification,
-      specialityType: notification.data?.specialityType,
       status: "active",
     });
   };
