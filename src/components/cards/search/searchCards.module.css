@@ -1,0 +1,49 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: space-between;
+    -webkit-box-shadow: 0 0 4px #b9b9b9;
+    box-shadow: 0 0 4px #b9b9b9;
+    border-radius: 15px;
+    padding: 10px 20px;
+    max-width: 750px;
+}
+
+.itemImage {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+.itemMain {
+    display: flex;
+}
+
+.mainDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.detiailsBtn {
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    width: 120px;
+    line-height: 40px;
+    font-weight: bold;
+    background-color: #4200FF;
+    color: white;
+}
+
+.detiailsBtn:hover {
+    cursor: pointer;
+    background-color: #3400c3;
+}

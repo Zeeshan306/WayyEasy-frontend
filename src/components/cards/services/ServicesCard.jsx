@@ -41,8 +41,7 @@ const ServicesCard = (props) => {
       onMouseOver={handleMouseEnter}
       onMouseOut={handleMouseLeave}
       onClick={() => {
-        props.setSearchType(props.value);
-        props.handleSearch();
+        props.setSearchQuery({ ...props.searchQuery, searchType: props.value });
       }}
       className={classes.root}
       style={{ background: hover ? props.hoverBackground : props?.background }}

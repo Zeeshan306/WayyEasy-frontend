@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormControlLabel, Grid, Switch } from "@material-ui/core";
+import { Grid, Switch } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 import Cards from "../../components/cards/services/ServicesCard.jsx";
@@ -13,6 +13,7 @@ import opdWhite from "../../files/Images/opd-white.png";
 import opdBlue from "../../files/Images/opd-blue.png";
 
 import home from "./home.module.css";
+import SearchCard from "../../components/cards/search/SearchCard.jsx";
 
 const IOSSwitch = withStyles((theme) => ({
   root: {
@@ -115,19 +116,37 @@ const MedicalServices = () => {
     },
   ];
 
-  const [searchType, setSearchType] = useState(null);
+  const data = [
+    {
+      id: 1,
+      name: "Aleena Mumtaz",
+      address: "46/a G. J. Khan Rood",
+      description: "Very beautiful and lovely doctor",
+      specialityType: "Chest Medicine"
+    }, {
+      id: 2,
+      name: "Aleena Mumtaz 2",
+      address: "46/a G. J. Khan Rood",
+      description: "Very beautiful and lovely doctor",
+      specialityType: "Chest Medicine"
+    }, {
+      id: 3,
+      name: "Aleena Mumtaz 3",
+      address: "46/a G. J. Khan Rood",
+      description: "Very beautiful and lovely doctor",
+      specialityType: "Chest Medicine"
+    },
+  ]
 
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
+  const [searchQuery, setSearchQuery] = useState({
+    name: null,
+    address: null,
+    searchType: null,
+    availibility: true,
   });
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
   const handleSearch = () => {
-    console.log(searchType);
+    console.log(searchQuery);
   };
 
   return (
@@ -145,34 +164,43 @@ const MedicalServices = () => {
             color={data.color}
             hoverColor={data.hoverColor}
             title={data.title}
-            handleSearch={handleSearch}
-            setSearchType={setSearchType}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
         ))}
       </Grid>
-      {searchType ? (
+      {searchQuery?.searchType ? (
         <div className={home.searchHeader}>
-          <h3>Find a {searchType}</h3>
+          <h3>Find a {searchQuery.searchType}</h3>
           <div className={home.searchSection}>
-            <input placeholder="Search with hospital name" />
-            {searchType === "physician" ? (
+            <input placeholder={`Search with ${searchQuery.searchType} name`}
+              checked={searchQuery.name}
+              onChange={e => setSearchQuery({ ...searchQuery, name: e.target.value })} />
+            {searchQuery.searchType === "physician" ? (
               <div className={home.availibility}>
                 <p>Availibility</p>
                 <IOSSwitch
-                  checked={state.checkedB}
-                  onChange={handleChange}
+                  checked={searchQuery.availibility}
+                  onChange={e => setSearchQuery({ ...searchQuery, availibility: e.target.checked })}
                   name="checkedB"
                 />
               </div>
             ) : (
-              <input placeholder="Search by city, pincode" />
+              <input placeholder="Search by city, pincode"
+                checked={searchQuery.address}
+                onChange={e => setSearchQuery({ ...searchQuery, address: e.target.value })} />
             )}
-            <botton className={home.searchButton}>Search</botton>
+            <botton onClick={handleSearch} className={home.searchButton}>Search</botton>
           </div>
         </div>
       ) : (
         ""
       )}
+      <Grid>
+        {data.map(data => (
+          <SearchCard key={data.id} data={data} />
+        ))}
+      </Grid>
     </div>
   );
 };
