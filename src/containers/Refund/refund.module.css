@@ -1,0 +1,13 @@
+.mainContainer {
+    position: relative;
+    max-width: 75%;
+    min-height: 60vh;
+    margin: auto;
+    margin-bottom: -30dp;
+    padding: 3% 5%;
+    margin-top: 40px;
+}
+
+h4 {
+    color: rgb(107, 107, 107);
+}

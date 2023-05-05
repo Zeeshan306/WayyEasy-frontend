@@ -24,6 +24,7 @@ const Footer = () => {
         <a href="#">WayyEasy Official Circle</a>
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms$conditions">Terms and Conditions</a>
+        <a href="/refund">Refund Policies</a>
       </div>
       <div className={foot.section3}>
         <h3>Follow Us</h3>

@@ -31,6 +31,7 @@ import Privacy from "./containers/Privacy/Privacy";
 import Footer from "./components/footer/Footer";
 
 import "./App.css";
+import Refund from "./containers/Refund/Refund";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/about" exact component={AboutUs} />
           <Route path="/admin/auth" exact component={Auth} />
           <Route path="/privacy" exact component={Privacy} />
+          <Route path="/refund" exact component={Refund} />
           <PrivateRoute
             path="/admin/opd/"
             component={() => (

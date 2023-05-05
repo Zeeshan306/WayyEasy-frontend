@@ -125,6 +125,81 @@
   position: relative;
 }
 
+/* search section starts here */
+
+.searchHeader {
+  position: relative;
+  margin: auto;
+  padding: 12px;
+  margin-top: 20px;
+  text-align: start;
+  max-width: 800px;
+  -webkit-box-shadow: 0 0 10px #9a9a9a;
+  box-shadow: 0 0 10px #9a9a9a;
+  border-radius: 20px;
+}
+
+.searchHeader h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+}
+
+.searchSection {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchSection input {
+  border: none;
+  background-color: #e6e6e6;
+  height: 40px;
+  color: #4200ff;
+  padding-left: 20px;
+  padding-top: 5px;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+.searchSection input:nth-child(1) {
+  width: 300px;
+}
+
+.searchSection input:nth-child(2) {
+  width: 200px;
+}
+
+.searchSection input:focus {
+  border: 3px solid #4200ff;
+  color: #4200ff;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.availibility {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.searchButton {
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  line-height: 45px;
+  margin-left: 5vw;
+  margin-right: 20px;
+  border-radius: 15px;
+  color: white;
+  background-image: linear-gradient(#4200ff, #2d01a4);
+}
+
+.searchButton:hover {
+  cursor: pointer;
+}
+
 /* media query */
 @media screen and (max-width: 968px) {
   .sectionOne {
@@ -142,6 +217,35 @@
     position: relative;
     margin: auto;
     margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 676px) {
+  .searchHeader {
+    max-width: 450px;
+  }
+
+  .searchSection {
+    flex-direction: column;
+  }
+
+  .searchSection input:nth-child(1) {
+    width: 300px;
+  }
+
+  .searchSection input:nth-child(2) {
+    width: 300px;
+    margin-top: 15px;
+  }
+
+  .availibility {
+    margin-left: 50px;
+  }
+
+  .searchButton {
+    margin-top: 10px;
+    width: 300px;
+    margin-right: 0px !important;
   }
 }
 
@@ -168,5 +272,19 @@
   .introFirst b,
   .introFirst h1 {
     font-size: 40px;
+  }
+
+  .searchSection input:nth-child(1) {
+    width: 200px;
+  }
+
+  .searchSection input:nth-child(2) {
+    width: 200px;
+    margin-top: 15px;
+  }
+
+  .searchButton {
+    margin-top: 10px;
+    width: 225px;
   }
 }
