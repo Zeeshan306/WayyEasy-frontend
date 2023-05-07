@@ -46,3 +46,6 @@ export const DeleteOPDService = (id) => API.delete(`/opdRoutes/remove/${id}`);
 //Physicians API
 export const EditPhysicians = (id, data) =>
   API.patch(`/physicians/edit/${id}`, data);
+
+//user search
+export const userHomeSearch = (data) => API.get(`/search?${data}`);

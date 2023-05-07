@@ -47,7 +47,7 @@ function App() {
           <Route path="/admin/auth" exact component={Auth} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/refund" exact component={Refund} />
-          <Route path="/:id" exact component={SingleSearchItemDetails} />
+          <Route path="/search/:id" exact component={SingleSearchItemDetails} />
           <PrivateRoute
             path="/admin/opd/"
             component={() => (

@@ -154,7 +154,7 @@
 .searchSection input {
   border: none;
   background-color: #e6e6e6;
-  height: 40px;
+  height: 50px;
   color: #4200ff;
   padding-left: 20px;
   padding-top: 5px;
@@ -164,9 +164,11 @@
 
 .searchSection input:nth-child(1) {
   width: 300px;
+  margin-right: 20px;
 }
 
-.searchSection input:nth-child(2) {
+.searchSection input:nth-child(2),
+.formControl {
   width: 200px;
 }
 
@@ -175,13 +177,6 @@
   color: #4200ff;
   font-weight: bold;
   font-size: 15px;
-}
-
-.availibility {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  margin-left: 10px;
 }
 
 .searchButton {
@@ -238,8 +233,10 @@
     margin-top: 15px;
   }
 
-  .availibility {
-    margin-left: 50px;
+  .formControl {
+    width: 320px !important;
+    margin-top: 15px !important;
+    margin-left: 20px !important;
   }
 
   .searchButton {
@@ -281,6 +278,10 @@
   .searchSection input:nth-child(2) {
     width: 200px;
     margin-top: 15px;
+  }
+
+  .formControl {
+    width: 220px !important;
   }
 
   .searchButton {

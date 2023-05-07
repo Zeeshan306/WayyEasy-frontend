@@ -49,3 +49,8 @@ export const servicesOPDConst = {
 export const physiciansConst = {
   EDIT_PHYSICIAN: "EDIT_PHYSICIAN",
 };
+
+//Search
+export const searchConsts = {
+  HOMESEARCH: "HOMESEARCH",
+}

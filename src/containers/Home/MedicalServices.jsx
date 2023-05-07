@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { Grid, Switch } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import {
+  Grid,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@material-ui/core";
+
+import { useDispatch, useSelector } from "react-redux";
 
 import Cards from "../../components/cards/services/ServicesCard.jsx";
 import physicianWhite from "../../files/Images/doc-white.png";
@@ -12,63 +19,16 @@ import pathLabBlue from "../../files/Images/path-lab-blue.png";
 import opdWhite from "../../files/Images/opd-white.png";
 import opdBlue from "../../files/Images/opd-blue.png";
 
-import home from "./home.module.css";
 import SearchCard from "../../components/cards/search/SearchCard.jsx";
 
-const IOSSwitch = withStyles((theme) => ({
-  root: {
-    width: 42,
-    height: 26,
-    padding: 0,
-    margin: theme.spacing(1),
-  },
-  switchBase: {
-    padding: 1,
-    "&$checked": {
-      transform: "translateX(16px)",
-      color: theme.palette.common.white,
-      "& + $track": {
-        backgroundColor: "#4200ff",
-        opacity: 1,
-        border: "none",
-      },
-    },
-    "&$focusVisible $thumb": {
-      color: "#52d869",
-      border: "6px solid #e6e6e6",
-    },
-  },
-  thumb: {
-    width: 24,
-    height: 24,
-  },
-  track: {
-    borderRadius: 26 / 2,
-    border: `1px solid ${theme.palette.grey[400]}`,
-    backgroundColor: theme.palette.grey[50],
-    opacity: 1,
-    transition: theme.transitions.create(["background-color", "border"]),
-  },
-  checked: {},
-  focusVisible: {},
-}))(({ classes, ...props }) => {
-  return (
-    <Switch
-      focusVisibleClassName={classes.focusVisible}
-      disableRipple
-      classes={{
-        root: classes.root,
-        switchBase: classes.switchBase,
-        thumb: classes.thumb,
-        track: classes.track,
-        checked: classes.checked,
-      }}
-      {...props}
-    />
-  );
-});
+import home from "./home.module.css";
+import { userSearch } from "../../redux/actions/user/homeSearch.js";
 
 const MedicalServices = () => {
+  const dispatch = useDispatch();
+  const store = useSelector((store) => store);
+  let searchedData = store?.homeSearch?.allSearchedPhysicians;
+
   const cardsList = [
     {
       key: "physician",
@@ -116,37 +76,16 @@ const MedicalServices = () => {
     },
   ];
 
-  const data = [
-    {
-      id: 1,
-      name: "Aleena Mumtaz",
-      address: "46/a G. J. Khan Rood",
-      description: "Very beautiful and lovely doctor",
-      specialityType: "Chest Medicine"
-    }, {
-      id: 2,
-      name: "Aleena Mumtaz 2",
-      address: "46/a G. J. Khan Rood",
-      description: "Very beautiful and lovely doctor",
-      specialityType: "Chest Medicine"
-    }, {
-      id: 3,
-      name: "Aleena Mumtaz 3",
-      address: "46/a G. J. Khan Rood",
-      description: "Very beautiful and lovely doctor",
-      specialityType: "Chest Medicine"
-    },
-  ]
+  const physicianTypeData = ["Chest Medicine", "Colon and Rectal Surgeons"];
 
   const [searchQuery, setSearchQuery] = useState({
-    name: null,
-    address: null,
-    searchType: null,
-    availibility: true,
+    name: "",
+    addressAndSpeciality: "",
+    searchType: "",
   });
 
   const handleSearch = () => {
-    console.log(searchQuery);
+    dispatch(userSearch(new URLSearchParams(searchQuery).toString()));
   };
 
   return (
@@ -173,31 +112,61 @@ const MedicalServices = () => {
         <div className={home.searchHeader}>
           <h3>Find a {searchQuery.searchType}</h3>
           <div className={home.searchSection}>
-            <input placeholder={`Search with ${searchQuery.searchType} name`}
+            <input
+              placeholder={`Search with ${searchQuery.searchType} name`}
               checked={searchQuery.name}
-              onChange={e => setSearchQuery({ ...searchQuery, name: e.target.value })} />
+              onChange={(e) =>
+                setSearchQuery({ ...searchQuery, name: e.target.value })
+              }
+            />
             {searchQuery.searchType === "physician" ? (
-              <div className={home.availibility}>
-                <p>Availibility</p>
-                <IOSSwitch
-                  checked={searchQuery.availibility}
-                  onChange={e => setSearchQuery({ ...searchQuery, availibility: e.target.checked })}
-                  name="checkedB"
-                />
-              </div>
+              <FormControl variant="outlined" className={home.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Speciality
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  label="Select hospital"
+                  onChange={(e) =>
+                    setSearchQuery({
+                      ...searchQuery,
+                      addressAndSpeciality: e.target.value,
+                    })
+                  }
+                  fullWidth
+                >
+                  {physicianTypeData?.map((data, i) => (
+                    <MenuItem value={data} key={i}>
+                      {data}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             ) : (
-              <input placeholder="Search by city, pincode"
-                checked={searchQuery.address}
-                onChange={e => setSearchQuery({ ...searchQuery, address: e.target.value })} />
+              <input
+                placeholder="Search by city, pincode"
+                checked={searchQuery.addressAndSpeciality}
+                onChange={(e) =>
+                  setSearchQuery({
+                    ...searchQuery,
+                    addressAndSpeciality: e.target.value,
+                  })
+                }
+              />
             )}
-            <botton onClick={handleSearch} className={home.searchButton}>Search</botton>
+            <botton onClick={handleSearch} className={home.searchButton}>
+              {searchQuery.name || searchQuery.addressAndSpeciality
+                ? "Search"
+                : "Search All"}
+            </botton>
           </div>
         </div>
       ) : (
         ""
       )}
       <Grid>
-        {data.map(data => (
+        {searchedData.map((data) => (
           <SearchCard key={data.id} data={data} />
         ))}
       </Grid>
