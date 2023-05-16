@@ -21,8 +21,8 @@ import opdBlue from "../../files/Images/opd-blue.png";
 
 import SearchCard from "../../components/cards/search/SearchCard.jsx";
 
-import home from "./home.module.css";
 import { userSearch } from "../../redux/actions/user/homeSearch.js";
+import home from "./home.module.css";
 
 const MedicalServices = () => {
   const dispatch = useDispatch();
@@ -91,6 +91,7 @@ const MedicalServices = () => {
   return (
     <div className={home.mSContainer}>
       <h1>What are you looking for?</h1>
+      <p>Click below for search</p>
       <Grid container justifyContent="space-around" className={home.cards}>
         {cardsList?.map((data) => (
           <Cards

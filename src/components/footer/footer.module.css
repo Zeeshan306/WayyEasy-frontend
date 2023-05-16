@@ -32,7 +32,7 @@
 
 .section2 a {
     text-decoration: none;
-    margin-top: 12px;
+    margin-top: 20px;
     color: black;
 }
 
@@ -41,8 +41,24 @@
     cursor: pointer;
 }
 
-.section3 a:nth-child(3) {
-    opacity: 0.71;
+.section3 a:nth-child(3),
+.section3 a:nth-child(2) {
+    opacity: 0.81;
+}
+
+.imageInsta:hover {
+    content: url("../../files/Images/insta_color.png");
+    background-repeat: no-repeat;
+}
+
+.imageFb:hover {
+    content: url("../../files/Images/facebook_colour.png");
+    background-repeat: no-repeat;
+}
+
+.imageLinkedIn:hover {
+    content: url("../../files/Images/linkedIn_color.png");
+    background-repeat: no-repeat;
 }
 
 .section3 a img {

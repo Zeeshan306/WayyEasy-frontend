@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import watchVideo from "../../files/Images/watch_video.png";
 import introImage from "../../files/Images/intro_image.png";
@@ -9,6 +9,13 @@ import Articles from "./Articles";
 import home from "./home.module.css";
 
 const Home = () => {
+  const ref = useRef();
+
+  const handleSearchNavigate = () => {
+    console.log(ref.current);
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className={home.mainContainer}>
       <div className={home.sectionOne}>
@@ -23,7 +30,7 @@ const Home = () => {
             and it does not just mean absence of diseases.
           </p>
           <div className={home.introFirstButton}>
-            <button>
+            <button onClick={handleSearchNavigate}>
               Search for hospital &nbsp;&nbsp;&nbsp;&nbsp; <span>&#x27F6;</span>
             </button>
             <button>
@@ -40,7 +47,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <MedicalServices />
+      <div ref={ref}>
+        <MedicalServices />
+      </div>
       {/* <Testimonial /> */}
       <Articles />
     </div>

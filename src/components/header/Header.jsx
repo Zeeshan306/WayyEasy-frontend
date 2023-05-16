@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogContent,
   Grid,
+  Typography,
 } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
@@ -27,8 +28,16 @@ import { useHistory, useLocation } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../FireBase/Firebase";
 
+import Cards from "../cards/services/ServicesCard";
+import hospitalWhite from "../../files/Images/hos-white.png";
+import hospitalBlue from "../../files/Images/hos-blue.png";
+import pathLabWhite from "../../files/Images/path-lab-white.png";
+import pathLabBlue from "../../files/Images/path-lab-blue.png";
+import opdWhite from "../../files/Images/opd-white.png";
+import opdBlue from "../../files/Images/opd-blue.png";
+
 import { logOut } from "../../redux/actions/admin/hospitalAdmin/owner";
-import logo from "../../files/Images/icon.png";
+import logo from "../../files/Images/icon.svg";
 import useStyles from "./styles";
 
 const Header = () => {
@@ -36,17 +45,56 @@ const Header = () => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
+
   const [authUser, setAuthUser] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [doctorsReview, setDoctorsReview] = useState([]);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   let dataList = null;
+
   const user = JSON.parse(localStorage.getItem("owner"))?.user;
 
-  const fetchPost = async () => {
+  const cardsList = [
+    {
+      key: "opd",
+      value: "opd",
+      title: "Test from OPD",
+      image: opdBlue,
+      hoverImage: opdWhite,
+      background: "white",
+      hoverBackground: "#4200FF",
+      color: "black",
+      hoverColor: "white",
+    },
+    {
+      key: "pathLabs",
+      value: "pathLab",
+      title: "Test from Path Lab",
+      image: pathLabBlue,
+      hoverImage: pathLabWhite,
+      background: "white",
+      hoverBackground: "#4200FF",
+      color: "black",
+      hoverColor: "white",
+    },
+    {
+      key: "hospital",
+      value: "owner",
+      title: "Book Hospital",
+      image: hospitalBlue,
+      hoverImage: hospitalWhite,
+      background: "white",
+      hoverBackground: "#4200FF",
+      color: "black",
+      hoverColor: "white",
+    },
+  ];
+
+  const fetchPhysicianActivitstionRequest = async () => {
     const q = query(
       collection(db, "doctors"),
       where("status", "==", "pending")
@@ -77,7 +125,7 @@ const Header = () => {
   }, [JSON.parse(localStorage.getItem("owner")), location]);
 
   useEffect(() => {
-    user?.role === "admin" && fetchPost();
+    user?.role === "admin" && fetchPhysicianActivitstionRequest();
   }, []);
 
   const toNotificationDetails = () => {
@@ -235,45 +283,21 @@ const Header = () => {
     >
       <DialogTitle id="alert-dialog-title">WayyEasy and You !!!</DialogTitle>
       <DialogContent className={classes.dialogBody}>
-        <Grid style={{ display: "flex", justifyContent: "space-between" }}>
-          <Button
-            variant="contained"
-            onClick={() => toAdmin("opd")}
-            className={classes.btnStyle}
-          >
-            As an OPD
-          </Button>
-          <Button
-            variant="contained"
-            className={classes.btnStyle}
-            onClick={() => toAdmin("doctor")}
-            autoFocus
-          >
-            As a Doctor
-          </Button>
-        </Grid>
-        <Grid
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: 10,
-          }}
-        >
-          <Button
-            variant="contained"
-            onClick={() => toAdmin("pathLab")}
-            className={classes.btnStyle}
-          >
-            As a Path Lab
-          </Button>
-          <Button
-            variant="contained"
-            className={classes.btnStyle}
-            onClick={() => toAdmin("owner")}
-            autoFocus
-          >
-            As a Hospital/Nursing Home
-          </Button>
+        <Grid container justifyContent="space-around" className={classes.cards}>
+          {cardsList?.map((data) => (
+            <Cards
+              key={data.key}
+              value={data.value}
+              image={data.image}
+              hoverImage={data.hoverImage}
+              background={data.background}
+              hoverBackground={data.hoverBackground}
+              color={data.color}
+              hoverColor={data.hoverColor}
+              title={data.title}
+              handleClickFunction={toAdmin}
+            />
+          ))}
         </Grid>
       </DialogContent>
     </Dialog>

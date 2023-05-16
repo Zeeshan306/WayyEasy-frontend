@@ -8,7 +8,6 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 100px;
 }
 
 .introFirst {
@@ -106,11 +105,14 @@
 
 /* medical services */
 .mSContainer {
+  padding-top: 100px;
   text-align: center;
 }
 
 .mSContainer h1 {
   font-size: 2em;
+  margin: 0;
+  padding: 0;
 }
 
 /* articles */
@@ -119,6 +121,15 @@
   width: 100%;
   margin-top: 100px;
   text-align: center;
+}
+
+.articlesContainer h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.articlesContainer p {
+  margin-bottom: 20px;
 }
 
 .cards {

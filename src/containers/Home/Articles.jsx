@@ -6,7 +6,6 @@ import ArticleCards from "../../components/cards/articles/ArticlesCard.jsx";
 import home from "./home.module.css";
 
 const Articles = () => {
-  let width = window.innerWidth;
   return (
     <div className={home.articlesContainer}>
       <h1>Our Latest Articles</h1>

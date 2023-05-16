@@ -16,15 +16,23 @@ const useStyles = makeStyles({
   },
   container: {
     width: 240,
+    textAlign: "center",
     height: 160,
   },
   textArea: {
     height: 50,
+    textAlign: "center",
   },
 });
 
 const ServicesCard = (props) => {
   const classes = useStyles();
+
+  const handleClickEvent = () => {
+    if (props.searchQuery) {
+      props.setSearchQuery({ ...props.searchQuery, searchType: props.value });
+    } else props.handleClickFunction(props.value);
+  };
 
   const [hover, setHover] = useState(false);
 
@@ -40,9 +48,7 @@ const ServicesCard = (props) => {
     <Card
       onMouseOver={handleMouseEnter}
       onMouseOut={handleMouseLeave}
-      onClick={() => {
-        props.setSearchQuery({ ...props.searchQuery, searchType: props.value });
-      }}
+      onClick={handleClickEvent}
       className={classes.root}
       style={{ background: hover ? props.hoverBackground : props?.background }}
     >
