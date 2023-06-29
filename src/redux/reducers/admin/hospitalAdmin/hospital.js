@@ -3,10 +3,24 @@ import { hospitalConsts } from "../../../../components/helpers/constants";
 const initialState = {
   allHospitals: [],
   singleHospital: [],
+  progress: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case hospitalConsts.PROGRESS:
+      if (action.payload) {
+        state = {
+          progress: true,
+        };
+      } else {
+        state = {
+          ...state,
+          progress: false,
+          allHospitals: action.payload,
+        };
+      }
+      break;
     case hospitalConsts.GET_HOSPITALS:
       state = {
         ...state,

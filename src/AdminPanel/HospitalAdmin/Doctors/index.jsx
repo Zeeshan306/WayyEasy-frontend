@@ -11,11 +11,10 @@ import Doctor from "./Doctor";
 
 const Doctors = () => {
   const history = useHistory();
-  const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
-  const store = useSelector((state) => state?.doctors?.allDoctors);
-  const doctors = store?.data;
+  const store = useSelector((state) => state?.doctors);
+  const doctors = store?.allDoctors?.data;
 
   const createDoctor = () => {
     history.push("/admin/doctors/managedoctors");
@@ -33,7 +32,7 @@ const Doctors = () => {
           <AddIcon />
         </Button>
       </div>
-      {doctors ? (
+      {!store?.progress ? (
         doctors &&
         doctors?.map((doctor) => <Doctor key={doctor?._id} doctor={doctor} />)
       ) : (

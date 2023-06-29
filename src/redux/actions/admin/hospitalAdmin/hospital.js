@@ -9,7 +9,9 @@ import { hospitalConsts } from "../../../../components/helpers/constants";
 
 export const getHospitals = () => async (dispatch) => {
   try {
+    dispatch({ type: hospitalConsts.PROGRESS, payload: { progress: true } });
     const { data } = await GetHospitals();
+    dispatch({ type: hospitalConsts.PROGRESS, payload: { progress: false } });
     dispatch({ type: hospitalConsts.GET_HOSPITALS, payload: data });
   } catch (error) {
     console.error(error);

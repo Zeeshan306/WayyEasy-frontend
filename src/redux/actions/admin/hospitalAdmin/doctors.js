@@ -10,6 +10,7 @@ import {
 
 export const fetchDoctors = () => async (dispatch) => {
   try {
+    dispatch({ type: doctorConsts.PROGRESS, payload: { progress: true } });
     const { data } = await FetchDoctors();
     dispatch({ type: doctorConsts.GET_DOCTORS, payload: data });
   } catch (error) {
@@ -19,6 +20,7 @@ export const fetchDoctors = () => async (dispatch) => {
 
 export const createDoctor = (doctor, history) => async (dispatch) => {
   try {
+    dispatch({ type: doctorConsts.PROGRESS, payload: { progress: true } });
     const { data } = await CreateDoctor(doctor);
     dispatch({ type: doctorConsts.CREATE_DOCTOR, payload: data });
     history.push("/admin/doctors");
@@ -29,6 +31,7 @@ export const createDoctor = (doctor, history) => async (dispatch) => {
 
 export const updateDoctor = (id, doctor, history) => async (dispatch) => {
   try {
+    dispatch({ type: doctorConsts.PROGRESS, payload: { progress: true } });
     const { data } = await UpdateDoctor(id, doctor);
     dispatch({ type: doctorConsts.EDIT_DOCTOR, payload: data });
     history.push("/admin/doctors");
@@ -39,6 +42,7 @@ export const updateDoctor = (id, doctor, history) => async (dispatch) => {
 
 export const fetchSingleDoctor = (id) => async (dispatch) => {
   try {
+    dispatch({ type: doctorConsts.PROGRESS, payload: { progress: true } });
     const { data } = await FetchSingleDoctor(id);
     dispatch({ type: doctorConsts.GET_SINGLE_DOCTOR, payload: data });
   } catch (error) {
@@ -48,6 +52,7 @@ export const fetchSingleDoctor = (id) => async (dispatch) => {
 
 export const deleteDoctor = (id) => async (dispatch) => {
   try {
+    dispatch({ type: doctorConsts.PROGRESS, payload: { progress: true } });
     const { data } = await DeleteDoctor(id);
     dispatch({ type: doctorConsts.DELETE_DOCTOR, payload: data });
   } catch (error) {

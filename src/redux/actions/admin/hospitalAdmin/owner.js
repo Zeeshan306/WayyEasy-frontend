@@ -3,6 +3,7 @@ import { ownersConst } from "../../../../components/helpers/constants";
 
 export const logIn = (owner, history) => async (dispatch) => {
   try {
+    dispatch({ type: ownersConst.PROGRESS });
     const { data } = await LogIn(owner);
     dispatch({ type: ownersConst.LOGIN_OWNERS, payload: data });
     switch (data?.user?.role) {
@@ -30,6 +31,7 @@ export const logIn = (owner, history) => async (dispatch) => {
 
 export const signUp = (owner, history) => async (dispatch) => {
   try {
+    dispatch({ type: ownersConst.PROGRESS });
     const { data } = await SignUp(owner);
     dispatch({ type: ownersConst.SIGNUP_OWNERS, payload: data });
     switch (data?.user?.role) {
@@ -60,11 +62,10 @@ export const logOut = (history) => async (dispatch) => {
     const res = await LogOut();
     if (res.status == 200) {
       localStorage.clear();
-      alert(res.data);
+      history.push("/admin/auth");
     } else {
       alert("Something went wrong");
     }
-    history.push("/admin/auth");
   } catch (error) {
     console.log(error);
   }

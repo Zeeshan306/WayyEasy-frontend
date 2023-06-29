@@ -12,7 +12,6 @@ const Home = () => {
   const ref = useRef();
 
   const handleSearchNavigate = () => {
-    console.log(ref.current);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 

@@ -1,4 +1,5 @@
 export const doctorConsts = {
+  PROGRESS: "PROGRESS",
   GET_DOCTORS: "GET_DOCTORS",
   GET_SINGLE_DOCTOR: "GET_SINGLE_DOCTOR",
   CREATE_DOCTOR: "CREATE_DOCTOR",
@@ -7,6 +8,7 @@ export const doctorConsts = {
 };
 
 export const hospitalConsts = {
+  PROGRESS: "PROGRESS",
   GET_HOSPITALS: "GET_HOSPITALS",
   GET_SINGLE_HOSPITAL: "GET_SINGLE_HOSPITAL",
   CREATE_HOSPITAL: "CREATE_HOSPITAL",
@@ -27,6 +29,7 @@ export const roomsConsts = {
 };
 
 export const ownersConst = {
+  PROGRESS: "PROGRESS",
   LOGIN_OWNERS: "LOGIN_OWNERS",
   SIGNUP_OWNERS: "SIGNUP_OWNERS",
   LOGOUT_OWNERS: "LOGOUT_OWNERS",
