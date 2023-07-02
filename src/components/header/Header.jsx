@@ -10,8 +10,8 @@ import {
   DialogTitle,
   DialogContent,
   Grid,
-  Typography,
 } from "@material-ui/core";
+
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
@@ -28,16 +28,18 @@ import { useHistory, useLocation } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../FireBase/Firebase";
 
-import Cards from "../cards/services/ServicesCard";
+
 import hospitalWhite from "../../files/Images/hos-white.png";
 import hospitalBlue from "../../files/Images/hos-blue.png";
 import pathLabWhite from "../../files/Images/path-lab-white.png";
 import pathLabBlue from "../../files/Images/path-lab-blue.png";
 import opdWhite from "../../files/Images/opd-white.png";
 import opdBlue from "../../files/Images/opd-blue.png";
+import logo from "../../files/Images/icon.svg";
 
 import { logOut } from "../../redux/actions/admin/hospitalAdmin/owner";
-import logo from "../../files/Images/icon.svg";
+
+import Cards from "../cards/services/ServicesCard";
 import useStyles from "./styles";
 
 const Header = () => {

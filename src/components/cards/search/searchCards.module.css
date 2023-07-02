@@ -8,7 +8,7 @@
     box-shadow: 0 0 4px #b9b9b9;
     border-radius: 15px;
     padding: 10px 20px;
-    max-width: 750px;
+    max-width: 760px;
 }
 
 .itemImage {
@@ -29,7 +29,14 @@ p {
 .mainDetails {
     display: flex;
     flex-direction: column;
-    align-items: start;
+}
+
+p {
+    width: 16vw;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .detiailsBtn {

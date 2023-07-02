@@ -3,10 +3,10 @@ import { searchConsts } from "../../../components/helpers/constants";
 
 export const userSearch = (searchData) => async (dispatch) => {
   try {
-    console.log(searchData)
+    dispatch({ type: searchConsts.PROGRESS });
     const { data } = await userHomeSearch(searchData);
     dispatch({ type: searchConsts.HOMESEARCH, payload: data });
   } catch (error) {
-    console.log(error);
+    dispatch({ type: searchConsts.ERROR, payload: error.message });
   }
 };

@@ -5,6 +5,8 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  CircularProgress,
+  Typography,
 } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -23,11 +25,19 @@ import SearchCard from "../../components/cards/search/SearchCard.jsx";
 
 import { userSearch } from "../../redux/actions/user/homeSearch.js";
 import home from "./home.module.css";
+import { useEffect } from "react";
 
 const MedicalServices = () => {
   const dispatch = useDispatch();
-  const store = useSelector((store) => store);
-  let searchedData = store?.homeSearch?.allSearchedPhysicians;
+  const [progress, setProgress] = useState(false);
+  const store = useSelector((store) => store?.homeSearch);
+
+  let searchedData = store?.allSearchedPhysicians;
+
+  useEffect(() => {
+    if (store.progress) setProgress(true);
+    else setProgress(false);
+  }, [dispatch, store?.progress]);
 
   const cardsList = [
     {
@@ -87,6 +97,8 @@ const MedicalServices = () => {
   const handleSearch = () => {
     dispatch(userSearch(new URLSearchParams(searchQuery).toString()));
   };
+
+  console.log("store", store);
 
   return (
     <div className={home.mSContainer}>
@@ -166,11 +178,23 @@ const MedicalServices = () => {
       ) : (
         ""
       )}
-      <Grid>
-        {searchedData.map((data) => (
-          <SearchCard key={data.id} data={data} />
-        ))}
-      </Grid>
+      <div className={home.searchResult}>
+        {store.error ? (
+          <Typography variant="p">{store?.errorMessage}</Typography>
+        ) : (
+          ""
+        )}
+
+        {progress ? <CircularProgress /> : ""}
+
+        {searchedData?.length > 0 ? (
+          searchedData.map((data) => <SearchCard key={data.id} data={data} />)
+        ) : (
+          <Typography variant="p">
+            {store.isSearching ? "Oops!!! no data found" : ""}
+          </Typography>
+        )}
+      </div>
     </div>
   );
 };

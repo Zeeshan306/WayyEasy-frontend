@@ -40,8 +40,6 @@ const Register = () => {
 
   const store = useSelector((state) => state?.owner);
 
-  console.log("register", store?.progress);
-
   useEffect(() => {
     if (store?.progress) setProgress(true);
     else setProgress(false);

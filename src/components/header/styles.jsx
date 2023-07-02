@@ -11,9 +11,7 @@ export default makeStyles((theme) => ({
     },
   },
   brandLogo: {
-    [theme.breakpoints.up("sm")]: {
-      width: "20ch",
-    },
+    width: "20ch",
   },
   inputRoot: {
     color: "inherit",

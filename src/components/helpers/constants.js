@@ -55,5 +55,7 @@ export const physiciansConst = {
 
 //Search
 export const searchConsts = {
+  PROGRESS: "PROGRESS",
   HOMESEARCH: "HOMESEARCH",
+  ERROR: "ERROR",
 }

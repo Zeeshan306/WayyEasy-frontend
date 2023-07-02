@@ -8,7 +8,7 @@ const SearchCard = ({ data }) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.itemMain}>
-        <img src={`${api}webSearch/${data.image}`} className={styles.itemImage} alt="search-item-image" />
+        <img src={`${api}webSearch/${data.image}`} className={styles.itemImage} alt="search-item" />
         <div className={styles.mainDetails}>
           <p>{data.name}</p>
           <p>{data?.description}</p>
