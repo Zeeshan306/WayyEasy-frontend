@@ -12,20 +12,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import Cards from "../../components/cards/services/ServicesCard.jsx";
-import physicianWhite from "../../files/Images/doc-white.png";
-import physicianBlue from "../../files/Images/doc-blue.png";
-import hospitalWhite from "../../files/Images/hos-white.png";
-import hospitalBlue from "../../files/Images/hos-blue.png";
-import pathLabWhite from "../../files/Images/path-lab-white.png";
-import pathLabBlue from "../../files/Images/path-lab-blue.png";
-import opdWhite from "../../files/Images/opd-white.png";
-import opdBlue from "../../files/Images/opd-blue.png";
 
 import SearchCard from "../../components/cards/search/SearchCard.jsx";
 
 import { userSearch } from "../../redux/actions/user/homeSearch.js";
 import home from "./home.module.css";
 import { useEffect } from "react";
+import { cardsList } from "../../components/helpers/uiConstants.js";
 
 const MedicalServices = () => {
   const dispatch = useDispatch();
@@ -38,53 +31,6 @@ const MedicalServices = () => {
     if (store.progress) setProgress(true);
     else setProgress(false);
   }, [dispatch, store?.progress]);
-
-  const cardsList = [
-    {
-      key: "physician",
-      value: "physician",
-      title: "Looking for a Doctor",
-      image: physicianBlue,
-      hoverImage: physicianWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-    {
-      key: "opd",
-      value: "opd",
-      title: "Test from OPD",
-      image: opdBlue,
-      hoverImage: opdWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-    {
-      key: "pathLabs",
-      value: "pathLab",
-      title: "Test from Path Lab",
-      image: pathLabBlue,
-      hoverImage: pathLabWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-    {
-      key: "hospital",
-      value: "hospital",
-      title: "Book Hospital",
-      image: hospitalBlue,
-      hoverImage: hospitalWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-  ];
 
   const physicianTypeData = ["Chest Medicine", "Colon and Rectal Surgeons"];
 

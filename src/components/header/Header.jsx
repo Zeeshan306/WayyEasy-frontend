@@ -28,19 +28,13 @@ import { useHistory, useLocation } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../FireBase/Firebase";
 
-
-import hospitalWhite from "../../files/Images/hos-white.png";
-import hospitalBlue from "../../files/Images/hos-blue.png";
-import pathLabWhite from "../../files/Images/path-lab-white.png";
-import pathLabBlue from "../../files/Images/path-lab-blue.png";
-import opdWhite from "../../files/Images/opd-white.png";
-import opdBlue from "../../files/Images/opd-blue.png";
 import logo from "../../files/Images/icon.svg";
 
 import { logOut } from "../../redux/actions/admin/hospitalAdmin/owner";
 
 import Cards from "../cards/services/ServicesCard";
 import useStyles from "./styles";
+import { cardsList } from "../helpers/uiConstants";
 
 const Header = () => {
   const classes = useStyles();
@@ -50,6 +44,7 @@ const Header = () => {
 
   const [authUser, setAuthUser] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [scroll, setScroll] = useState(false);
   const [doctorsReview, setDoctorsReview] = useState([]);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -60,41 +55,12 @@ const Header = () => {
 
   const user = JSON.parse(localStorage.getItem("owner"))?.user;
 
-  const cardsList = [
-    {
-      key: "opd",
-      value: "opd",
-      title: "Test from OPD",
-      image: opdBlue,
-      hoverImage: opdWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-    {
-      key: "pathLabs",
-      value: "pathLab",
-      title: "Test from Path Lab",
-      image: pathLabBlue,
-      hoverImage: pathLabWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-    {
-      key: "hospital",
-      value: "owner",
-      title: "Book Hospital",
-      image: hospitalBlue,
-      hoverImage: hospitalWhite,
-      background: "white",
-      hoverBackground: "#4200FF",
-      color: "black",
-      hoverColor: "white",
-    },
-  ];
+  // window.addEventListener("scroll", () => {
+  //   console.log(window.scrollY);
+  //   if (window.scrollY > 150) {
+  //     setScroll(true);
+  //   } else setScroll(false);
+  // });
 
   const fetchPhysicianActivitstionRequest = async () => {
     const q = query(
@@ -286,20 +252,24 @@ const Header = () => {
       <DialogTitle id="alert-dialog-title">WayyEasy and You !!!</DialogTitle>
       <DialogContent className={classes.dialogBody}>
         <Grid container justifyContent="space-around" className={classes.cards}>
-          {cardsList?.map((data) => (
-            <Cards
-              key={data.key}
-              value={data.value}
-              image={data.image}
-              hoverImage={data.hoverImage}
-              background={data.background}
-              hoverBackground={data.hoverBackground}
-              color={data.color}
-              hoverColor={data.hoverColor}
-              title={data.title}
-              handleClickFunction={toAdmin}
-            />
-          ))}
+          {cardsList?.map((data) => {
+            if (data.key != "physician") {
+              return (
+                <Cards
+                  key={data.key}
+                  value={data.value}
+                  image={data.image}
+                  hoverImage={data.hoverImage}
+                  background={data.background}
+                  hoverBackground={data.hoverBackground}
+                  color={data.color}
+                  hoverColor={data.hoverColor}
+                  title={data.title}
+                  handleClickFunction={toAdmin}
+                />
+              );
+            }
+          })}
         </Grid>
       </DialogContent>
     </Dialog>

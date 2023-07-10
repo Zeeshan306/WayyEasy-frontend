@@ -1,3 +1,6 @@
+//-----------------------------------------   static constants   --------------------------------
+
+// hospitals
 export const doctorConsts = {
   PROGRESS: "PROGRESS",
   GET_DOCTORS: "GET_DOCTORS",
@@ -58,4 +61,4 @@ export const searchConsts = {
   PROGRESS: "PROGRESS",
   HOMESEARCH: "HOMESEARCH",
   ERROR: "ERROR",
-}
+};
