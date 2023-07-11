@@ -6,7 +6,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export const ShowError = () => {
+export const ShowAlert = (props) => {
   const [open, setOpen] = useState(true);
 
   const handleClose = (event, reason) => {
@@ -20,10 +20,10 @@ export const ShowError = () => {
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
       <Alert
         onClose={handleClose}
-        severity="error"
+        severity={props.alertType}
         sx={{ width: "100%" }}
       >
-        This is a success message!
+        {props.message}
       </Alert>
     </Snackbar>
   );
