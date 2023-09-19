@@ -25,7 +25,7 @@ const Home = () => {
             about your health
           </h1>
           <p>
-            Good health is the state of mental, physical and social well being
+            Good health is the state of mental, physical and social well being 
             and it does not just mean absence of diseases.
           </p>
           <div className={home.introFirstButton}>
