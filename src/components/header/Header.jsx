@@ -174,7 +174,7 @@ const Header = () => {
         <IconButton aria-label="show 4 new mails" color="inherit">
           <DescriptionIcon />
         </IconButton>
-        <a href="/articles" style={{ textDecoration: "none", color: "black" }}> 
+        <a href="/articles" style={{ textDecoration: "none", color: "black" }}>
           Articles
         </a>
       </MenuItem>
@@ -182,7 +182,7 @@ const Header = () => {
         <IconButton aria-label="show 4 new mails" color="inherit">
           <PermContactCalendarIcon />
         </IconButton>
-        <a href="/contact" style={{ textDecoration: "none", color: "black" }}> 
+        <a href="/contact" style={{ textDecoration: "none", color: "black" }}>
           Contact Us
         </a>
       </MenuItem>
@@ -212,7 +212,7 @@ const Header = () => {
               color="inherit"
               onClick={toNotificationDetails}
             >
-              <Badge badgeContent={doctorsReview.length} color="secondary">   
+              <Badge badgeContent={doctorsReview.length} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -249,9 +249,9 @@ const Header = () => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">WayyEasy and You !!!</DialogTitle>  
+      <DialogTitle id="alert-dialog-title">WayyEasy and You !!!</DialogTitle>
       <DialogContent className={classes.dialogBody}>
-        <Grid container justifyContent="space-around" className={classes.cards}>  
+        <Grid container justifyContent="space-around" className={classes.cards}>
           {cardsList?.map((data) => {
             if (data.key != "physician") {
               return (
@@ -261,7 +261,7 @@ const Header = () => {
                   image={data.image}
                   hoverImage={data.hoverImage}
                   background={data.background}
-                  hoverBackground={data.hoverBackground}  
+                  hoverBackground={data.hoverBackground}
                   color={data.color}
                   hoverColor={data.hoverColor}
                   title={data.title}
