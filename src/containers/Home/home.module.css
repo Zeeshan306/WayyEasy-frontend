@@ -122,24 +122,51 @@
 
 /* articles */
 .articlesContainer {
-  position: relative;
-  width: 100%;
+  position: relative; 
+  width: 100%;  
   margin-top: 100px;
-  text-align: center;
+  text-align: center;   
 }
 
 .articlesContainer h1 {
   margin: 0;
-  padding: 0;
+  padding: 0; 
 }
 
 .articlesContainer p {
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
+  overflow: hidden;  
+  text-overflow: ellipsis;   
+  display: -webkit-box;
+  -webkit-line-clamp: 4;           
+  -webkit-box-orient: vertical;  
 }
 
 .cards {
-  position: relative;
+  position: relative;  
 }
+
+.articlesContainer .btn {  
+  color: #4200ff;     
+  border: 2px solid #4200ff;     
+  padding: 15px 20px; 
+  border-radius: 12px; 
+  font-size: 15px; 
+  margin-right: -80rem;
+  cursor: pointer;
+  
+}
+
+.articlesContainer .btn:hover {
+  background: #4200ff;  
+  color: white;     
+}
+
+.articlesContainer .icons {
+  font-size: 18px;  
+  margin-bottom: -5px;  
+}
+
 
 /* search section starts here */
 
@@ -234,11 +261,21 @@
     margin: auto;
     margin-top: 50px;
   }
+
+  .articlesContainer p { 
+    width: 100%;  
+}
+
+  .articlesContainer .btn {  
+    margin: auto;  
+    margin-top: 20px;  
+  }
+
 }
 
 @media screen and (max-width: 676px) {
   .searchHeader {
-    max-width: 450px;
+    max-width: 450px;  
   }
 
   .searchSection {
@@ -265,6 +302,17 @@
     width: 300px;
     margin-right: 0px !important;
   }
+
+  .articlesContainer p { 
+      width: 100%;  
+  }
+
+  .articlesContainer .btn {  
+    margin: auto;  
+    margin-top: 20px;
+  }
+
+ 
 }
 
 @media screen and (max-width: 450px) {
@@ -309,4 +357,7 @@
     margin-top: 10px;
     width: 225px;
   }
+
+  
+
 }

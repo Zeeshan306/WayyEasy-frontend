@@ -11,7 +11,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 
-import Cards from "../../components/cards/services/ServicesCard.jsx";
+import Cards from "../../components/cards/services/ServicesCard.jsx"; 
 
 import SearchCard from "../../components/cards/search/SearchCard.jsx";
 
