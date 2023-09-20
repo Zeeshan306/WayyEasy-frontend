@@ -12,18 +12,18 @@ const Footer = () => {
     <Grid
       container
       justifyContent="space-around"
-      className={foot.mainContainer}  
+      className={foot.mainContainer}
     >
       <div className={foot.section1}>
-        <img src={logo} alt="footer-logo" /> 
+        <img src={logo} alt="footer-logo" />
         <h4>Our vision</h4>
         <p>The world without fear and independent from all diseases.</p>
       </div>
       <div className={foot.section2}>
-        <a href="#">WayyEasy Official Blog</a>  
+        <a href="#">WayyEasy Official Blog</a>
         {/* <a href="#">WayyEasy Official Circle</a> */}
         <a href="/privacy">Privacy Policy</a>
-        <a href="/terms$conditions">Terms and Conditions</a>  
+        <a href="/terms$conditions">Terms and Conditions</a>
         <a href="/refund">Refund Policies</a>
       </div>
       <div className={foot.section3}>

@@ -1,21 +1,20 @@
-import React from "react"; 
 import {
   Card,
   CardContent,
   CardMedia,
   makeStyles,
   Typography,
-} from "@material-ui/core"; 
+} from "@material-ui/core";
+import React from "react";
 
 import image from "../../../files/Images/articles_default.png";
 
 const useStyles = makeStyles({
   root: {
-    position: "relative", 
-    marginBottom: 26, 
-    paddingLeft: 12, 
-    padding: 0,       
-    zIndex: 5,       
+    position: "relative",
+    marginBottom: 10,
+    padding: 10,
+    zIndex: 1,
     display: "flex",
   },
   media: {
@@ -29,7 +28,7 @@ const useStyles = makeStyles({
     margin: "auto",
     marginTop: -50,
     zIndex: 2,
-    borderRadius:  20,
+    borderRadius: 20,
     height: 60,
     backgroundColor: "#4200FF",
   },
@@ -59,11 +58,12 @@ const ArticlesCard = (props) => {
     };
   }
   return (
-    <Card className={classes.root} elevation={3} style={alignStyle.style}>   
+    <Card className={classes.root} elevation={3} style={alignStyle.style}>
+      {" "}
       <div style={{ position: "relative" }}>
         <CardMedia
           style={{
-            height: props?.main ? 160 : 180,
+            height: props?.main ? 160 : 190,
             width: props?.main ? 270 : 250,
           }}
           className={classes.media}
@@ -72,7 +72,7 @@ const ArticlesCard = (props) => {
         />
         <div
           className={classes.blue}
-          style={{ width: props?.main ? 280 : 260 }}  
+          style={{ width: props?.main ? 280 : 260 }}
         ></div>
       </div>
       <CardContent style={{ position: "relative" }}>
@@ -80,16 +80,16 @@ const ArticlesCard = (props) => {
           {props?.title}
         </Typography>
         <Typography
-           sx={{
+          sx={{
             display: "-webkit-box",
             overflow: "hidden",
-            WebkitBoxOrient: "vertical", 
-            WebkitLineClamp: 0,          
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 1,
           }}
           variant="body1"
         >
-          {props?.des}  
-        </Typography> 
+          {props?.des}
+        </Typography>
       </CardContent>
     </Card>
   );
