@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css"
-
+//test
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
 //Hospital Admin Routes
