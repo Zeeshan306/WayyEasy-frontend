@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "./App.css"
+import "./App.css";
 
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
