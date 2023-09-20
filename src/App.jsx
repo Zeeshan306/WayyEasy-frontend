@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import "./App.css";
+
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
 //Hospital Admin Routes
@@ -33,8 +36,6 @@ import Footer from "./components/footer/Footer";
 
 //Search Routes
 import SingleSearchItemDetails from "./containers/SingleSearchItem/SingleSearchItemDetails";
-
-import "./App.css";
 
 function App() {
   return (
