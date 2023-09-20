@@ -1,7 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import "./App.css"
-//test
 import PrivateRoute from "./components/hoc/PrivateRoutes";
 
 //Hospital Admin Routes
@@ -32,10 +29,14 @@ import Notification from "./containers/Notifications/Notification";
 import AboutUs from "./containers/About/AboutUs";
 import Privacy from "./containers/Privacy/Privacy";
 import Refund from "./containers/Refund/Refund";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/footer/Footer"; 
 
 //Search Routes
-import SingleSearchItemDetails from "./containers/SingleSearchItem/SingleSearchItemDetails";
+import SingleSearchItemDetails from "./containers/SingleSearchItem/SingleSearchItemDetails";  
+import AllArticles from "./containers/AllArticles/AllArticles"; 
+import ArticleDetailsPage  from "./containers/AllArticles/ArticleDetailsPage"; 
+
+import "./App.css";   
 
 function App() {
   return (
@@ -44,11 +45,13 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/about" exact component={AboutUs} />
+          <Route path="/about" exact component={AboutUs} /> 
           <Route path="/admin/auth" exact component={Auth} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/refund" exact component={Refund} />
-          <Route path="/search/:id" exact component={SingleSearchItemDetails} />
+          <Route path="/articles" exact component={AllArticles} />      
+          <Route path="/articleDetails/:id" exact component={ArticleDetailsPage} />    
+          <Route path="/search/:id" exact component={SingleSearchItemDetails} /> 
           <PrivateRoute
             path="/admin/opd/"
             component={() => (
