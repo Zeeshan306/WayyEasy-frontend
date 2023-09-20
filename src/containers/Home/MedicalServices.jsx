@@ -18,7 +18,8 @@ import SearchCard from "../../components/cards/search/SearchCard.jsx";
 import { userSearch } from "../../redux/actions/user/homeSearch.js";
 import home from "./home.module.css";
 import { useEffect } from "react";
-import { cardsList } from "../../components/helpers/uiConstants.js";
+import { alertType, cardsList } from "../../components/helpers/uiConstants.js";
+import { ShowAlert } from "../../components/utility/commonFunctions.jsx";
 
 const MedicalServices = () => {
   const dispatch = useDispatch();
@@ -137,7 +138,7 @@ const MedicalServices = () => {
           searchedData.map((data) => <SearchCard key={data.id} data={data} />)
         ) : (
           <Typography variant="p">
-            {store.isSearching ? "Oops!!! no data found" : ""}
+            {store.isSearching ? <ShowAlert alertType={alertType.error} message={"Oops!!! no data found"} /> : ""}
           </Typography>
         )}
       </div>

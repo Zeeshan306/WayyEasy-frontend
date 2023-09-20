@@ -33,6 +33,7 @@ export const roomsConsts = {
 
 export const ownersConst = {
   PROGRESS: "PROGRESS",
+  ERROR: "ERROR",
   LOGIN_OWNERS: "LOGIN_OWNERS",
   SIGNUP_OWNERS: "SIGNUP_OWNERS",
   LOGOUT_OWNERS: "LOGOUT_OWNERS",

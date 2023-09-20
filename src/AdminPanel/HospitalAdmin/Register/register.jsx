@@ -18,6 +18,8 @@ import {
 } from "../../../redux/actions/admin/hospitalAdmin/owner";
 import { useHistory } from "react-router-dom";
 import ProgressBar from "../../../components/loaders/ProgressBar";
+import { ShowAlert } from "../../../components/utility/commonFunctions";
+import { alertType } from "../../../components/helpers/uiConstants";
 
 const user = {
   firstName: "",
@@ -41,9 +43,7 @@ const Register = () => {
   const store = useSelector((state) => state?.owner);
 
   useEffect(() => {
-    if (store?.progress) setProgress(true);
-    else setProgress(false);
-  }, [store?.progress, dispatch, sessionStorage.getItem("adminType")]);
+  }, [store?.progress, store?.error, dispatch, sessionStorage.getItem("adminType")]);
 
   useEffect(() => {
     setAdminType();
@@ -82,7 +82,10 @@ const Register = () => {
 
   return (
     <>
-      {progress ? <ProgressBar /> : ""}
+      {store?.progress && <ProgressBar />}
+      {store?.error ? (<ShowAlert alertType={alertType.error} message={store?.errorMsg} />) : ""}
+      {/* {progressHandler} */}
+      {/* // {progress ? <ProgressBar /> : ""} */}
       <Container component="main" maxWidth="xs">
         <Paper className={classes.paper} elevation={3}>
           <Avatar className={classes.avatar}>

@@ -53,3 +53,10 @@ export const cardsList = [
     hoverColor: "white",
   },
 ];
+
+export const alertType = {
+  success: "success",
+  warning: "warning",
+  error: "error",
+  info: "info"
+}

@@ -21,11 +21,12 @@ export const logIn = (owner, history) => async (dispatch) => {
         history.push("/admin/opd");
         break;
       default:
-        alert("Seomthing went wrong. Please try again later.");
+        console.log(data);
+        dispatch({ type: ownersConst.ERROR, payload: data });
         break;
     }
   } catch (error) {
-    alert(error?.response?.data);
+    dispatch({ type: ownersConst.ERROR, payload: error.message });
   }
 };
 
@@ -49,11 +50,13 @@ export const signUp = (owner, history) => async (dispatch) => {
         history.push("/admin/opd");
         break;
       default:
-        alert("Seomthing went wrong. Please try again later.");
+        console.log(response);
+        dispatch({ type: ownersConst.ERROR, payload: response.message });
         break;
     }
   } catch (error) {
     console.log(error);
+    dispatch({ type: ownersConst.ERROR, payload: error.message });
   }
 };
 
@@ -67,6 +70,6 @@ export const logOut = (history) => async (dispatch) => {
       alert("Something went wrong");
     }
   } catch (error) {
-    console.log(error);
+    dispatch({ type: ownersConst.ERROR })
   }
 };
